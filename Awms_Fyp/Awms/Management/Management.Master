@@ -1,0 +1,36 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Management.master.cs" Inherits="Awms_Fyp.Awms.Management.Management" MasterPageFile="~/Awms/Main.Master"%>
+
+<asp:Content runat="server" ContentPlaceHolderID="title">
+    Awms: Management - <asp:ContentPlaceHolder runat="server" ID="sub_title" />
+</asp:Content>
+
+<asp:Content runat="server" ContentPlaceHolderID="body">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-push-9 col-md-3">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Nav List</h3>
+                    </div>
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="default.aspx" class="btn btn-block btn-primary">Home</a>
+                                <a href="add user.aspx" class="btn btn-block btn-primary">Add Admin</a>
+                                <a href="javascript:void(0)" class="btn btn-block btn-primary">Add Doctor</a>
+                                <a href="javascript:void(0)" class="btn btn-block btn-primary">Button</a>
+                                <a href="javascript:void(0)" class="btn btn-block btn-primary">Button</a>
+                                <a href="javascript:void(0)" class="btn btn-block btn-primary">Button</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-pull-3 col-md-9">
+                <asp:ContentPlaceHolder runat="server" ID="body" />
+            </div>
+        </div>
+    </div>
+
+</asp:Content>
