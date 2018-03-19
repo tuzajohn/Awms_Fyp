@@ -49,6 +49,15 @@ namespace Awms_Fyp.Awms.Management {
         protected global::System.Web.UI.HtmlControls.HtmlInputText contactBox;
         
         /// <summary>
+        /// Select1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect Select1;
+        
+        /// <summary>
         /// datePicker control.
         /// </summary>
         /// <remarks>
@@ -67,39 +76,12 @@ namespace Awms_Fyp.Awms.Management {
         protected global::System.Web.UI.HtmlControls.HtmlSelect genderSelect;
         
         /// <summary>
-        /// userBox control.
+        /// NxtBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText userBox;
-        
-        /// <summary>
-        /// passBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword passBox;
-        
-        /// <summary>
-        /// rePass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword rePass;
-        
-        /// <summary>
-        /// Button1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor Button1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor NxtBtn;
     }
 }

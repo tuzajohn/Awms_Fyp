@@ -30,7 +30,7 @@ namespace Awms_Fyp.Awms
             <script src='{domain}/Styles/assets/js/index.js'></script>
             <script type='text/javascript' src='{domain}/Styles/assets/js/jquery.dataTables.min.js'></script>
             <script type='text/javascript' src='{domain}/Styles/assets/js/dataTables.tableTools.min.js'></script>
-            <script type='text/javascript' src='{domain}/Styles/assets/dataTables.bootstrap.js'></script>";
+            <script type='text/javascript' src='{domain}/Styles/assets/js/dataTables.bootstrap.js'></script>";
             StylesSheetLiteral.Text = styles;
             JavaScript.Text = java;
         }

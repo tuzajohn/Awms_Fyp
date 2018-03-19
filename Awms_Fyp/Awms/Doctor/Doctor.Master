@@ -1,17 +1,20 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Management.master.cs" Inherits="Awms_Fyp.Awms.Management.Management" MasterPageFile="~/Awms/Main.Master"%>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Doctor.master.cs" Inherits="Awms_Fyp.Awms.Doctor.Doctor" MasterPageFile="~/Awms/Main.Master"%>
 
 <asp:Content runat="server" ContentPlaceHolderID="title">
-    Awms: Management - <asp:ContentPlaceHolder runat="server" ID="sub_title" />
+    Awms: Doctor - <asp:ContentPlaceHolder runat="server" ID="title" />
 </asp:Content>
 
 <asp:Content runat="server" ContentPlaceHolderID="body">
 
     <div class="container">
+
+        <asp:Literal runat="server" ID="MessageLiteral" />
+
         <div class="row">
             <div class="col-md-push-9 col-md-3">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-primary">
+                        <div class="card card-royal">
                             <div class="card-header">
                                 <h3 class="card-title">Profile</h3>
                             </div>
@@ -26,7 +29,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <hr class="color dashed" />
+                                <hr class="color-royal dashed" />
                                 <div class="">
                                     <ul class="list-group">
                                         <asp:Literal runat="server" ID="user_linksLiteral" />
@@ -36,19 +39,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="card card-primary">
+                <div class="card card-royal">
                     <div class="card-header">
                         <h3 class="card-title">Nav List</h3>
                     </div>
                     <div class="card-block">
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="Default.aspx" class="btn btn-block btn-primary">Home</a>
-                                <a href="Add User.aspx" class="btn btn-block btn-primary">Add Admin</a>
-                                <a href="Add Doctor.aspx" class="btn btn-block btn-primary">Add Doctor</a>
-                                <a href="Username.aspx" class="btn btn-block btn-primary">Change Username</a>
-                                <a href="Password.aspx" class="btn btn-block btn-primary">Change Password</a>
-                                <a href="Picture.aspx" class="btn btn-block btn-primary">Change Picture</a>
+                                <a href="default.aspx" class="btn btn-block btn-royal">Home</a>
+                                <a href="username.aspx" class="btn btn-block btn-royal">Change Username</a>
+                                <a href="password.aspx" class="btn btn-block btn-royal">Change Password</a>
                             </div>
                         </div>
                     </div>

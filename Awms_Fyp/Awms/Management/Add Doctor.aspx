@@ -4,16 +4,16 @@
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="body">
     <div class="card card-warning">
+        <div class="card-header">
+            <h3>New Doctor</h3>
+        </div>
         <div class="card-block">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card card-royal">
-                        <div class="card-header">
-                            <h2><i class="fa fa-user-plus"></i></h2>
-                        </div>
-                        <div class="card-block">
-                            <form runat="server">
-                                <fieldset>
+            <form runat="server">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group label-floating">
@@ -64,6 +64,24 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="btn-group bootstrap-select form-control">
+                                                    <select runat="server" id="Select1" class="form-control selectpicker" data-dropup-auto="false" tabindex="-98">
+                                                        <option class="disable">Professionality</option>
+                                                        <option>Dentist</option>
+                                                        <option>Optician</option>
+                                                        <option>Medical Officer</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
                                             <div class="form-group label-floating">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">
@@ -99,54 +117,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group label-floating">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-user-circle"></i>
-                                            </span>
-                                            <label class="control-label" for="userBox">Username</label>
-                                            <input runat="server" type="text" id="userBox" class="form-control" required="" />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group label-floating">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="zmdi zmdi-lock"></i>
-                                                    </span>
-                                                    <label class="control-label" for="passBox">Password</label>
-                                                    <input runat="server" type="password" id="passBox" class="form-control" required="" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group label-floating">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="zmdi zmdi-lock"></i>
-                                                    </span>
-                                                    <label class="control-label" for="rePass">Re-type Password</label>
-                                                    <input runat="server" type="password" id="rePass" class="form-control" required="" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <a href="#" runat="server" id="Button1"  class="btn btn-royal btn-block">Set Shit<i class="fa fa-arrow-right"></i></a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="default.aspx" class="btn btn-royal btn-block">Cancel</a>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                            </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
 
+                    <div class="row">
+                        <div class="text-center ">
+                            <a href="#" runat="server" id="NxtBtn" class="btn btn-royal btn-block">Next<i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
         </div>
     </div>
 </asp:Content>

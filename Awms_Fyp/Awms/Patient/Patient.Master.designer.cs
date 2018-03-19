@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Awms_Fyp.Awms.Management {
+namespace Awms_Fyp.Awms.Patient {
     
     
-    public partial class Management {
+    public partial class Patient {
         
         /// <summary>
-        /// sub_title control.
+        /// title control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder sub_title;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder title;
         
         /// <summary>
         /// image control.

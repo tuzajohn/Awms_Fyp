@@ -10,51 +10,42 @@
 namespace Awms_Fyp.Awms.Management {
     
     
-    public partial class Management {
+    public partial class Username {
         
         /// <summary>
-        /// sub_title control.
+        /// oldusername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder sub_title;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText oldusername;
         
         /// <summary>
-        /// image control.
+        /// newusername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal image;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText newusername;
         
         /// <summary>
-        /// detailsLiteral control.
+        /// password control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal detailsLiteral;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword password;
         
         /// <summary>
-        /// user_linksLiteral control.
+        /// saveUserBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal user_linksLiteral;
-        
-        /// <summary>
-        /// body control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder body;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor saveUserBtn;
     }
 }

@@ -10,51 +10,60 @@
 namespace Awms_Fyp.Awms.Management {
     
     
-    public partial class Management {
+    public partial class Doctor_Detail {
         
         /// <summary>
-        /// sub_title control.
+        /// profImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder sub_title;
+        protected global::System.Web.UI.WebControls.Image profImage;
         
         /// <summary>
-        /// image control.
+        /// input control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal image;
+        protected global::System.Web.UI.WebControls.FileUpload input;
         
         /// <summary>
-        /// detailsLiteral control.
+        /// userBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal detailsLiteral;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText userBox;
         
         /// <summary>
-        /// user_linksLiteral control.
+        /// passBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal user_linksLiteral;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword passBox;
         
         /// <summary>
-        /// body control.
+        /// rePass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder body;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword rePass;
+        
+        /// <summary>
+        /// SaveBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor SaveBtn;
     }
 }

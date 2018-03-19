@@ -44,10 +44,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Customs">
+      <HintPath>..\..\..\repos\CustomsFunctionLibraries\Customs\bin\Debug\Customs.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Project_Dll, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Project_Dll\bin\Debug\Project_Dll.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\repos\CustomsFunctionLibraries\Customs\bin\Debug\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,9 +78,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Awms\Account\Account.Master" />
+    <Content Include="Awms\Doctor\Appointment.aspx" />
+    <Content Include="Awms\Doctor\Default.aspx" />
+    <Content Include="Awms\Doctor\Password.aspx" />
+    <Content Include="Awms\Doctor\Username.aspx" />
+    <Content Include="Awms\Management\Doctor Detail.aspx" />
     <Content Include="Awms\Management\Management.Master" />
     <Content Include="Awms\Main.Master" />
+    <Content Include="Awms\Doctor\Doctor.Master" />
+    <Content Include="Awms\Patient\Password.aspx" />
+    <Content Include="Awms\Patient\Patient.Master" />
     <None Include="packages.config" />
+    <Content Include="Awms\Management\Password.aspx" />
+    <Content Include="Awms\Management\Picture.aspx" />
+    <Content Include="Awms\Management\Username.aspx" />
+    <Content Include="Awms\Patient\Default.aspx" />
+    <Content Include="Awms\Patient\Picture.aspx" />
+    <Content Include="Awms\Patient\Username.aspx" />
     <Content Include="Styles\assets\fonts\fontawesome-webfont.eot" />
     <Content Include="Styles\assets\fonts\fontawesome-webfont.ttf" />
     <Content Include="Styles\assets\fonts\fontawesome-webfont.woff" />
@@ -2727,6 +2752,41 @@
     <Compile Include="Awms\Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Awms\Doctor\Appointment.aspx.cs">
+      <DependentUpon>Appointment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Doctor\Appointment.aspx.designer.cs">
+      <DependentUpon>Appointment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Doctor\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Doctor\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Doctor\Doctor.Master.cs">
+      <DependentUpon>Doctor.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Doctor\Doctor.Master.designer.cs">
+      <DependentUpon>Doctor.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Doctor\Password.aspx.cs">
+      <DependentUpon>Password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Doctor\Password.aspx.designer.cs">
+      <DependentUpon>Password.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Doctor\Username.aspx.cs">
+      <DependentUpon>Username.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Doctor\Username.aspx.designer.cs">
+      <DependentUpon>Username.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Awms\Main.Master.cs">
       <DependentUpon>Main.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2755,12 +2815,75 @@
     <Compile Include="Awms\Management\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Awms\Management\Doctor Detail.aspx.cs">
+      <DependentUpon>Doctor Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Management\Doctor Detail.aspx.designer.cs">
+      <DependentUpon>Doctor Detail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Awms\Management\Management.Master.cs">
       <DependentUpon>Management.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Awms\Management\Management.Master.designer.cs">
       <DependentUpon>Management.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Management\Password.aspx.cs">
+      <DependentUpon>Password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Management\Password.aspx.designer.cs">
+      <DependentUpon>Password.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Management\Picture.aspx.cs">
+      <DependentUpon>Picture.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Management\Picture.aspx.designer.cs">
+      <DependentUpon>Picture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Management\Username.aspx.cs">
+      <DependentUpon>Username.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Management\Username.aspx.designer.cs">
+      <DependentUpon>Username.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Patient\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Patient\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Patient\Password.aspx.cs">
+      <DependentUpon>Password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Patient\Password.aspx.designer.cs">
+      <DependentUpon>Password.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Patient\Patient.Master.cs">
+      <DependentUpon>Patient.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Patient\Patient.Master.designer.cs">
+      <DependentUpon>Patient.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Patient\Picture.aspx.cs">
+      <DependentUpon>Picture.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Patient\Picture.aspx.designer.cs">
+      <DependentUpon>Picture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Patient\Username.aspx.cs">
+      <DependentUpon>Username.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Patient\Username.aspx.designer.cs">
+      <DependentUpon>Username.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
