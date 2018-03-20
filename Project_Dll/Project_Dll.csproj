@@ -30,6 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DLW Library">
+      <HintPath>D:\Business\Kernelgen\DLW Library.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>D:\Business\Kernelgen\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Support Library">
+      <HintPath>D:\Business\Kernelgen\Support Library.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HtmlElements.cs" />
+    <Compile Include="Modal_Db.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

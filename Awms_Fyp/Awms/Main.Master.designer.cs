@@ -31,22 +31,22 @@ namespace Awms_Fyp.Awms {
         protected global::System.Web.UI.WebControls.Literal StylesSheetLiteral;
         
         /// <summary>
-        /// logI control.
+        /// logIn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl logI;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl logIn;
         
         /// <summary>
-        /// logO control.
+        /// logOut control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl logO;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl logOut;
         
         /// <summary>
         /// body control.

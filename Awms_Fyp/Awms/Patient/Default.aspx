@@ -20,7 +20,7 @@
                                     <div class="form-group">
                                         <label for="datePicker" class="col-md-4 control-label">Select appointment date</label>
                                         <div class="col-md-8">
-                                            <input runat="server" id="datePicker" type="text" class="form-control" required="required" />
+                                            <input id="datePicker" type="text" class="form-control" required="required" />
                                         </div>
                                     </div>
                                     <div class="form-group">

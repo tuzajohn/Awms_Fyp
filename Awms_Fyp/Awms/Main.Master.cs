@@ -9,11 +9,27 @@ namespace Awms_Fyp.Awms
 {
     public partial class Main : System.Web.UI.MasterPage
     {
+        SessionVerification SV;
         protected void Page_Load(object sender, EventArgs e)
         {
+            SV = new SessionVerification();
             var uri = Request.Url.AbsoluteUri;
             var domain = uri.Replace(uri.Substring(uri.IndexOf(Request.Url.AbsolutePath)), "");
             StyleScript(domain);
+            Check();
+        }
+        private void Check()
+        {
+            if (!string.IsNullOrEmpty(SV.Uid))
+            {
+                logIn.Style.Add("display", "none");
+                logOut.Style.Remove("display");
+            }
+            else
+            {
+                logIn.Style.Remove("display");
+                logOut.Style.Add("display", "none");
+            }
         }
         private void StyleScript(string domain)
         {

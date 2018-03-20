@@ -46,9 +46,9 @@
                     <div class="card-block">
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="default.aspx" class="btn btn-block btn-royal">Home</a>
-                                <a href="username.aspx" class="btn btn-block btn-royal">Change Username</a>
-                                <a href="password.aspx" class="btn btn-block btn-royal">Change Password</a>
+                                <a href="../../doctor/home" class="btn btn-block btn-royal">Home</a>
+                                <a href="../../doctor/username" class="btn btn-block btn-royal">Change Username</a>
+                                <a href="../../doctor/password" class="btn btn-block btn-royal">Change Password</a>
                             </div>
                         </div>
                     </div>

@@ -9,7 +9,7 @@ namespace Project_Dll
     public class HtmlElements
     {
         public enum MessageType {SUCCESS, INFO, ERROR};
-        public enum UserType { PATIENT, DOCTOR, MANAGEMENT}
+        public enum UserType { PATIENT, DOCTOR, MANAGEMENT, ALL}
         public string GetMesage(string message, MessageType type, UserType userType)
         {
             var type_ = string.Empty;
@@ -22,7 +22,7 @@ namespace Project_Dll
                         case UserType.PATIENT: type_ = "primary"; break;
                         case UserType.DOCTOR: type_ = "royal"; break;
                         case UserType.MANAGEMENT: type_ = "warning"; break;
-                        default: break;
+                        default:type_ = "info"; break;
                     }
                     break;
                 case MessageType.ERROR: type_ = "danger"; break;

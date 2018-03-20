@@ -76,6 +76,15 @@ namespace Awms_Fyp.Awms.Account {
         protected global::System.Web.UI.HtmlControls.HtmlSelect genderSelect;
         
         /// <summary>
+        /// addressBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea addressBox;
+        
+        /// <summary>
         /// userBox control.
         /// </summary>
         /// <remarks>

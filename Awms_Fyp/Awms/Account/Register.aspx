@@ -92,8 +92,8 @@
                                             <span class="input-group-addon">
                                                 <i class="fa fa-map-marker"></i>
                                             </span>
-                                            <label class="control-label" for="userBox">Address</label>
-                                            <textarea class="form-control" rows="3" id="textArea"></textarea>                                            
+                                            <label class="control-label" for="addressBox">Address</label>
+                                            <textarea runat="server" class="form-control" rows="3" id="addressBox"></textarea>                                            
                                         </div>
                                     </div>
                                 </div>

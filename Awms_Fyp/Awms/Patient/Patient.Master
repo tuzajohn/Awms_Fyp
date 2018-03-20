@@ -40,10 +40,10 @@
                     <div class="card-block">
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="Default.aspx" class="btn btn-block btn-primary">Home</a>
-                                <a href="Username.aspx" class="btn btn-block btn-primary">Change Username</a>
-                                <a href="Password.aspx" class="btn btn-block btn-primary">Change Password</a>
-                                <a href="Picture.aspx" class="btn btn-block btn-primary">Change Picture</a>
+                                <a href="home" class="btn btn-block btn-primary">Home</a>
+                                <a href="username" class="btn btn-block btn-primary">Change Username</a>
+                                <a href="password" class="btn btn-block btn-primary">Change Password</a>
+                                <a href="picture" class="btn btn-block btn-primary">Change Picture</a>
                             </div>
                         </div>
                     </div>

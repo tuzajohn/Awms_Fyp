@@ -9,12 +9,11 @@ namespace Awms_Fyp.Awms.Doctor
 {
     public partial class Doctor : System.Web.UI.MasterPage
     {
+        SessionVerification SV;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["message"] != null)
-            {
-                MessageLiteral.Text = Session["message"].ToString();
-            }
+            SV = new SessionVerification();
+            user_linksLiteral.Text = SV.Name;
         }
     }
 }

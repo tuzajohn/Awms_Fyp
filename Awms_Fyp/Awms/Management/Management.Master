@@ -43,12 +43,12 @@
                     <div class="card-block">
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="Default.aspx" class="btn btn-block btn-primary">Home</a>
-                                <a href="Add User.aspx" class="btn btn-block btn-primary">Add Admin</a>
-                                <a href="Add Doctor.aspx" class="btn btn-block btn-primary">Add Doctor</a>
-                                <a href="Username.aspx" class="btn btn-block btn-primary">Change Username</a>
-                                <a href="Password.aspx" class="btn btn-block btn-primary">Change Password</a>
-                                <a href="Picture.aspx" class="btn btn-block btn-primary">Change Picture</a>
+                                <a href="../../management/dashboard" class="btn btn-block btn-primary">Home</a>
+                                <a href="../../management/admin/new" class="btn btn-block btn-primary">Add Admin</a>
+                                <a href="../../management/doctor/new" class="btn btn-block btn-primary">Add Doctor</a>
+                                <a href="../../management/username" class="btn btn-block btn-primary">Change Username</a>
+                                <a href="../../management/password" class="btn btn-block btn-primary">Change Password</a>
+                                <a href="../../management/picture" class="btn btn-block btn-primary">Change Picture</a>
                             </div>
                         </div>
                     </div>

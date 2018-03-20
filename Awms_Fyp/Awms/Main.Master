@@ -49,13 +49,13 @@
                   <i class="zmdi zmdi-home"></i>
                             </a>
                         </li>
-                        <li runat="server" class="dropdown" id="logI">
-                            <a href="awms/account/default.aspx" class="dropdown-toggle animated fadeIn animation-delay-4" data-name="log">Login
+                        <li runat="server" class="dropdown" id="logIn">
+                            <a href="../../login" class="dropdown-toggle animated fadeIn animation-delay-4" data-name="log">Login
                   <i class="zmdi zmdi-account"></i>
                             </a>
                         </li>
-                        <li runat="server" class="dropdown" id="logO">
-                            <a href="awms/account/logout.aspx" class="dropdown-toggle animated fadeIn animation-delay-4" data-name="log">Logout
+                        <li runat="server" class="dropdown" id="logOut">
+                            <a href="../../logout" class="dropdown-toggle animated fadeIn animation-delay-4" data-name="log">Logout
                   <i class="zmdi zmdi-power-setting"></i>
                             </a>
                         </li>
@@ -91,7 +91,7 @@
             </div>
         </footer>
         <div class="btn-back-top">
-            <a href="#" data-scroll id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised ">
+            <a href="#" id="back-top" class="btn-circle btn-circle-primary btn-circle-sm btn-circle-raised ">
                 <i class="zmdi zmdi-long-arrow-up"></i>
             </a>
         </div>
@@ -127,5 +127,6 @@
     </div>
     <asp:Literal runat="server" ID="JavaScript" />
     <asp:ContentPlaceHolder runat="server" ID="JavaScriptCode" />
+    
 </body>
 </html>

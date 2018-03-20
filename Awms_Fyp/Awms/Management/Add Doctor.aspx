@@ -82,18 +82,19 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="form-group label-floating">
+                                            <div class="form-group">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
                                                     </span>
                                                     <label class="control-label" for="userBox">Date of Birth</label>
-                                                    <input runat="server" id="datePicker" type="text" class="form-control" />
+                                                    <input runat="server" id="dob" type="date" class="form-control" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <label class="control-label" for="userBox">Gender</label>
                                                 <div class="btn-group bootstrap-select form-control">
                                                     <select runat="server" id="genderSelect" class="form-control selectpicker" data-dropup-auto="false" tabindex="-98">
                                                         <option>Gender</option>
