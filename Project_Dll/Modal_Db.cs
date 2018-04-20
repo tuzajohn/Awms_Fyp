@@ -2685,6 +2685,840 @@ namespace Project_Dll
         }
 
     }
+    public class Speciality_table : Speciality_table_support
+    {
+        Functions db = new Functions(); string id = "";
+        public string Id
+        {
+            get { return id; }
+            set { updateField("id", value, id); id = value; }
+        }
+        string doctor_id = "";
+        public string Doctor_id
+        {
+            get { return doctor_id; }
+            set { updateField("doctor_id", value, id); doctor_id = value; }
+        }
+        string speciality = "";
+        public string Speciality
+        {
+            get { return speciality; }
+            set { updateField("speciality", value, id); speciality = value; }
+        }
+        public Speciality_table() { }
+        public Speciality_table(string id) { loadData(id); }
+        private Speciality_table loadData(string id)
+        {
+            string[] pars = { "value" };
+            string[] values = { id };
+            foreach (System.Data.DataRow row in db.MysqlMulti("SELECT * FROM `speciality_table` WHERE `id` = @value", pars, values).Rows)
+            {
+                this.id = row["id"].ToString();
+                this.doctor_id = row["doctor_id"].ToString();
+                this.speciality = row["speciality"].ToString();
+            }
+            return this;
+        }
+
+        private void load(string query, string[] pars, string[] values)
+        {
+            this.id = "";
+            this.doctor_id = "";
+            this.speciality = "";
+            foreach (System.Data.DataRow row in db.MysqlMulti(query, pars, values).Rows)
+            {
+                this.id = row["id"].ToString();
+                this.doctor_id = row["doctor_id"].ToString();
+                this.speciality = row["speciality"].ToString();
+            }
+        }
+
+        public Speciality_table Load_record_with(Column column, LogicalOperator logicalOperator, string value)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            load(query, pars, values);
+            return this;
+        }
+        public Speciality_table Load_record_with(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            load(query, pars, values);
+            return this;
+        }
+        public Speciality_table updateField(string fieldName, string value, string id)
+        {
+            string[] pars = { "value" };
+            string[] values = { value };
+            db.MysqlPlain("UPDATE `speciality_table` SET " + fieldName + " = @value WHERE `id` = " + id + "", pars, values);
+            loadData(id); return this;
+        }
+
+        public Speciality_table updateRow(string id, string doctor_id, string speciality)
+        {
+            string[] pars = { "id", "doctor_id", "speciality" };
+            string[] values = { id, doctor_id, speciality };
+            db.MysqlPlain("UPDATE `speciality_table` SET `id` = @id, `doctor_id` = @doctor_id, `speciality` = @speciality WHERE `id` = @id", pars, values);
+            loadData(id);
+            return this;
+        }
+        public Speciality_table insert(string doctor_id, string speciality)
+        {
+            string[] pars = { "doctor_id", "speciality" };
+            string[] values = { doctor_id, speciality };
+            db.MysqlPlain("INSERT INTO `speciality_table`(`doctor_id`, `speciality`) VALUES(@doctor_id, @speciality)", pars, values);
+            loadData(db.getMaxID("speciality_table"));
+            return this;
+        }
+        public void delete(string id)
+        {
+            string[] pars = { "value" };
+            string[] values = { id };
+            db.MysqlPlain("DELETE FROM `speciality_table` WHERE `id` = @value", pars, values);
+            loadData(id); id = "";
+        }
+        public List<Speciality_table> Search_For(Column column, LogicalOperator logicalOperator, string value)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Speciality_table> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Speciality_table> Search_For(Column column, LogicalOperator logicalOperator, string value, Column order_column, Order order)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Speciality_table> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, Column order_column, Order order)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Speciality_table> Search_For(Column column, LogicalOperator logicalOperator, string value, int limit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Speciality_table> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, int limit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Speciality_table> Search_For(Column column, LogicalOperator logicalOperator, string value, int lowerLimit, int upperLimit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Speciality_table> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, int lowerLimit, int upperLimit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Speciality_table> Search_For(Column column, LogicalOperator logicalOperator, string value, Column order_column, Order order, int limit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Speciality_table> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, Column order_column, Order order, int limit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Speciality_table> Search_For(Column column, LogicalOperator logicalOperator, string value, Column order_column, Order order, int lowerLimit, int upperLimit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Speciality_table> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, Column order_column, Order order, int lowerLimit, int upperLimit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `speciality_table` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Speciality_table> getAllRecords()
+        {
+            string query = "SELECT * FROM `speciality_table`";
+            return createObjects(db.MysqlMulti(query));
+        }
+        public List<Speciality_table> getAllRecords(Column order_column, Order order)
+        {
+            string query = "SELECT * FROM `speciality_table`";
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<Speciality_table> getAllRecords(int limit)
+        {
+            string query = "SELECT * FROM `speciality_table`";
+            query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<Speciality_table> getAllRecords(int lowerLimit, int upperLimit)
+        {
+            string query = "SELECT * FROM `speciality_table`";
+            query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<Speciality_table> getAllRecords(Column order_column, Order order, int limit)
+        {
+            string query = "SELECT * FROM `speciality_table`";
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<Speciality_table> getAllRecords(Column order_column, Order order, int lowerLimit, int upperLimit)
+        {
+            string query = "SELECT * FROM `speciality_table`";
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query));
+        }
+    }
+    public class Speciality_table_support
+    {
+        public List<Speciality_table> createObjects(System.Data.DataTable table)
+        {
+            List<Speciality_table> objects = new List<Speciality_table>();
+            foreach (System.Data.DataRow row in table.Rows)
+            {
+                Speciality_table instance = new Speciality_table();
+                instance.Id = row["id"].ToString();
+                instance.Doctor_id = row["doctor_id"].ToString();
+                instance.Speciality = row["speciality"].ToString();
+                objects.Add(instance);
+            }
+            return objects;
+        }
+
+        public enum LogicalOperator { EQUAL_TO, NOT_EQUAL_TO, LESS_THAN, LESS_THAN_OR_EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL_TO, LIKE }
+        public string getLogicalOperatorSymbol(LogicalOperator operatorName)
+        {
+            if (operatorName == LogicalOperator.EQUAL_TO) { return "="; }
+            if (operatorName == LogicalOperator.NOT_EQUAL_TO) { return "!="; }
+            if (operatorName == LogicalOperator.LESS_THAN) { return "<"; }
+            if (operatorName == LogicalOperator.LESS_THAN_OR_EQUAL_TO) { return "<="; }
+            if (operatorName == LogicalOperator.GREATER_THAN) { return ">"; }
+            if (operatorName == LogicalOperator.GREATER_THAN_OR_EQUAL_TO) { return ">="; }
+            return "";
+        }
+        public enum Order { ASCENDING, DESCENDING }
+        public string getOrder(Order order)
+        {
+            if (order == Order.ASCENDING) { return "ASC"; }
+            if (order == Order.DESCENDING) { return "DESC"; }
+            return "ASC";
+        }
+        public enum Relation { AND, OR }
+        public enum Column { Id, Doctor_id, Speciality }
+        public string getEnumColumnDbName(Column column)
+        {
+            if (column == Column.Id) { return "id"; }
+            if (column == Column.Doctor_id) { return "doctor_id"; }
+            if (column == Column.Speciality) { return "speciality"; }
+            return "";
+        }
+        public System.Data.DataTable createDataTable(List<Speciality_table> objects)
+        {
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("id"); table.Columns.Add("doctor_id"); table.Columns.Add("speciality"); foreach (Speciality_table instance in objects) { table.Rows.Add(instance.Id, instance.Doctor_id, instance.Speciality); }
+            return table;
+        }
+
+    }
+    public class Symptom_dataset : Symptom_dataset_support
+    {
+        Functions db = new Functions(); string id = "";
+        public string Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        string doctor_id = "";
+        public string Doctor_id
+        {
+            get { return doctor_id; }
+            set { doctor_id = value; }
+        }
+        string symptom = "";
+        public string Symptom
+        {
+            get { return symptom; }
+            set { symptom = value; }
+        }
+        public Symptom_dataset() { }
+        private void load(string query, string[] pars, string[] values)
+        {
+            this.id = "";
+            this.doctor_id = "";
+            this.symptom = "";
+            foreach (System.Data.DataRow row in db.MysqlMulti(query, pars, values).Rows)
+            {
+                this.id = row["id"].ToString();
+                this.doctor_id = row["doctor_id"].ToString();
+                this.symptom = row["symptom"].ToString();
+            }
+        }
+
+        public Symptom_dataset Load_record_with(Column column, LogicalOperator logicalOperator, string value)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            load(query, pars, values);
+            return this;
+        }
+        public Symptom_dataset Load_record_with(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            load(query, pars, values);
+            return this;
+        }
+        public Symptom_dataset insert(string id, string doctor_id, string symptom)
+        {
+            string[] pars = { "id", "doctor_id", "symptom" };
+            string[] values = { id, doctor_id, symptom };
+            db.MysqlPlain("INSERT INTO `symptom_dataset`(`id`, `doctor_id`, `symptom`) VALUES(@id, @doctor_id, @symptom)", pars, values);
+            return this;
+        }
+        public List<Symptom_dataset> Search_For(Column column, LogicalOperator logicalOperator, string value)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Symptom_dataset> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Symptom_dataset> Search_For(Column column, LogicalOperator logicalOperator, string value, Column order_column, Order order)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Symptom_dataset> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, Column order_column, Order order)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Symptom_dataset> Search_For(Column column, LogicalOperator logicalOperator, string value, int limit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Symptom_dataset> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, int limit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Symptom_dataset> Search_For(Column column, LogicalOperator logicalOperator, string value, int lowerLimit, int upperLimit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Symptom_dataset> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, int lowerLimit, int upperLimit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Symptom_dataset> Search_For(Column column, LogicalOperator logicalOperator, string value, Column order_column, Order order, int limit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Symptom_dataset> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, Column order_column, Order order, int limit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Symptom_dataset> Search_For(Column column, LogicalOperator logicalOperator, string value, Column order_column, Order order, int lowerLimit, int upperLimit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Symptom_dataset> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, Column order_column, Order order, int lowerLimit, int upperLimit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `symptom_dataset` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Symptom_dataset> getAllRecords()
+        {
+            string query = "SELECT * FROM `symptom_dataset`";
+            return createObjects(db.MysqlMulti(query));
+        }
+        public List<Symptom_dataset> getAllRecords(Column order_column, Order order)
+        {
+            string query = "SELECT * FROM `symptom_dataset`";
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<Symptom_dataset> getAllRecords(int limit)
+        {
+            string query = "SELECT * FROM `symptom_dataset`";
+            query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<Symptom_dataset> getAllRecords(int lowerLimit, int upperLimit)
+        {
+            string query = "SELECT * FROM `symptom_dataset`";
+            query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<Symptom_dataset> getAllRecords(Column order_column, Order order, int limit)
+        {
+            string query = "SELECT * FROM `symptom_dataset`";
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<Symptom_dataset> getAllRecords(Column order_column, Order order, int lowerLimit, int upperLimit)
+        {
+            string query = "SELECT * FROM `symptom_dataset`";
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query));
+        }
+    }
+    public class Symptom_dataset_support
+    {
+        public List<Symptom_dataset> createObjects(System.Data.DataTable table)
+        {
+            List<Symptom_dataset> objects = new List<Symptom_dataset>();
+            foreach (System.Data.DataRow row in table.Rows)
+            {
+                Symptom_dataset instance = new Symptom_dataset();
+                instance.Id = row["id"].ToString();
+                instance.Doctor_id = row["doctor_id"].ToString();
+                instance.Symptom = row["symptom"].ToString();
+                objects.Add(instance);
+            }
+            return objects;
+        }
+
+        public enum LogicalOperator { EQUAL_TO, NOT_EQUAL_TO, LESS_THAN, LESS_THAN_OR_EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL_TO, LIKE }
+        public string getLogicalOperatorSymbol(LogicalOperator operatorName)
+        {
+            if (operatorName == LogicalOperator.EQUAL_TO) { return "="; }
+            if (operatorName == LogicalOperator.NOT_EQUAL_TO) { return "!="; }
+            if (operatorName == LogicalOperator.LESS_THAN) { return "<"; }
+            if (operatorName == LogicalOperator.LESS_THAN_OR_EQUAL_TO) { return "<="; }
+            if (operatorName == LogicalOperator.GREATER_THAN) { return ">"; }
+            if (operatorName == LogicalOperator.GREATER_THAN_OR_EQUAL_TO) { return ">="; }
+            return "";
+        }
+        public enum Order { ASCENDING, DESCENDING }
+        public string getOrder(Order order)
+        {
+            if (order == Order.ASCENDING) { return "ASC"; }
+            if (order == Order.DESCENDING) { return "DESC"; }
+            return "ASC";
+        }
+        public enum Relation { AND, OR }
+        public enum Column { Id, Doctor_id, Symptom }
+        public string getEnumColumnDbName(Column column)
+        {
+            if (column == Column.Id) { return "id"; }
+            if (column == Column.Doctor_id) { return "doctor_id"; }
+            if (column == Column.Symptom) { return "symptom"; }
+            return "";
+        }
+        public System.Data.DataTable createDataTable(List<Symptom_dataset> objects)
+        {
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("id"); table.Columns.Add("doctor_id"); table.Columns.Add("symptom"); foreach (Symptom_dataset instance in objects) { table.Rows.Add(instance.Id, instance.Doctor_id, instance.Symptom); }
+            return table;
+        }
+
+    }
     public class User_details : User_details_support
     {
         Functions db = new Functions(); string id = "";
@@ -2692,6 +3526,12 @@ namespace Project_Dll
         {
             get { return id; }
             set { updateField("id", value, id); id = value; }
+        }
+        string user_id = "";
+        public string User_id
+        {
+            get { return user_id; }
+            set { updateField("user_id", value, id); user_id = value; }
         }
         string fname = "";
         public string Fname
@@ -2750,6 +3590,7 @@ namespace Project_Dll
             foreach (System.Data.DataRow row in db.MysqlMulti("SELECT * FROM `user_details` WHERE `id` = @value", pars, values).Rows)
             {
                 this.id = row["id"].ToString();
+                this.user_id = row["user_id"].ToString();
                 this.fname = row["fname"].ToString();
                 this.lname = row["lname"].ToString();
                 this.email = row["email"].ToString();
@@ -2765,6 +3606,7 @@ namespace Project_Dll
         private void load(string query, string[] pars, string[] values)
         {
             this.id = "";
+            this.user_id = "";
             this.fname = "";
             this.lname = "";
             this.email = "";
@@ -2776,6 +3618,7 @@ namespace Project_Dll
             foreach (System.Data.DataRow row in db.MysqlMulti(query, pars, values).Rows)
             {
                 this.id = row["id"].ToString();
+                this.user_id = row["user_id"].ToString();
                 this.fname = row["fname"].ToString();
                 this.lname = row["lname"].ToString();
                 this.email = row["email"].ToString();
@@ -2836,19 +3679,19 @@ namespace Project_Dll
             loadData(id); return this;
         }
 
-        public User_details updateRow(string id, string fname, string lname, string email, string address, string contact, string gender, string dob, string user_type)
+        public User_details updateRow(string id, string user_id, string fname, string lname, string email, string address, string contact, string gender, string dob, string user_type)
         {
-            string[] pars = { "id", "fname", "lname", "email", "address", "contact", "gender", "dob", "user_type" };
-            string[] values = { id, fname, lname, email, address, contact, gender, dob, user_type };
-            db.MysqlPlain("UPDATE `user_details` SET `id` = @id, `fname` = @fname, `lname` = @lname, `email` = @email, `address` = @address, `contact` = @contact, `gender` = @gender, `dob` = @dob, `user_type` = @user_type WHERE `id` = @id", pars, values);
+            string[] pars = { "id", "user_id", "fname", "lname", "email", "address", "contact", "gender", "dob", "user_type" };
+            string[] values = { id, user_id, fname, lname, email, address, contact, gender, dob, user_type };
+            db.MysqlPlain("UPDATE `user_details` SET `id` = @id, `user_id` = @user_id, `fname` = @fname, `lname` = @lname, `email` = @email, `address` = @address, `contact` = @contact, `gender` = @gender, `dob` = @dob, `user_type` = @user_type WHERE `id` = @id", pars, values);
             loadData(id);
             return this;
         }
-        public User_details insert(string fname, string lname, string email, string address, string contact, string gender, string dob, string user_type)
+        public User_details insert(string user_id, string fname, string lname, string email, string address, string contact, string gender, string dob, string user_type)
         {
-            string[] pars = { "fname", "lname", "email", "address", "contact", "gender", "dob", "user_type" };
-            string[] values = { fname, lname, email, address, contact, gender, dob, user_type };
-            db.MysqlPlain("INSERT INTO `user_details`(`fname`, `lname`, `email`, `address`, `contact`, `gender`, `dob`, `user_type`) VALUES(@fname, @lname, @email, @address, @contact, @gender, @dob, @user_type)", pars, values);
+            string[] pars = { "user_id", "fname", "lname", "email", "address", "contact", "gender", "dob", "user_type" };
+            string[] values = { user_id, fname, lname, email, address, contact, gender, dob, user_type };
+            db.MysqlPlain("INSERT INTO `user_details`(`user_id`, `fname`, `lname`, `email`, `address`, `contact`, `gender`, `dob`, `user_type`) VALUES(@user_id, @fname, @lname, @email, @address, @contact, @gender, @dob, @user_type)", pars, values);
             loadData(db.getMaxID("user_details"));
             return this;
         }
@@ -3133,6 +3976,7 @@ namespace Project_Dll
             {
                 User_details instance = new User_details();
                 instance.Id = row["id"].ToString();
+                instance.User_id = row["user_id"].ToString();
                 instance.Fname = row["fname"].ToString();
                 instance.Lname = row["lname"].ToString();
                 instance.Email = row["email"].ToString();
@@ -3165,10 +4009,11 @@ namespace Project_Dll
             return "ASC";
         }
         public enum Relation { AND, OR }
-        public enum Column { Id, Fname, Lname, Email, Address, Contact, Gender, Dob, User_type }
+        public enum Column { Id, User_id, Fname, Lname, Email, Address, Contact, Gender, Dob, User_type }
         public string getEnumColumnDbName(Column column)
         {
             if (column == Column.Id) { return "id"; }
+            if (column == Column.User_id) { return "user_id"; }
             if (column == Column.Fname) { return "fname"; }
             if (column == Column.Lname) { return "lname"; }
             if (column == Column.Email) { return "email"; }
@@ -3182,7 +4027,435 @@ namespace Project_Dll
         public System.Data.DataTable createDataTable(List<User_details> objects)
         {
             System.Data.DataTable table = new System.Data.DataTable();
-            table.Columns.Add("id"); table.Columns.Add("fname"); table.Columns.Add("lname"); table.Columns.Add("email"); table.Columns.Add("address"); table.Columns.Add("contact"); table.Columns.Add("gender"); table.Columns.Add("dob"); table.Columns.Add("user_type"); foreach (User_details instance in objects) { table.Rows.Add(instance.Id, instance.Fname, instance.Lname, instance.Email, instance.Address, instance.Contact, instance.Gender, instance.Dob, instance.User_type); }
+            table.Columns.Add("id"); table.Columns.Add("user_id"); table.Columns.Add("fname"); table.Columns.Add("lname"); table.Columns.Add("email"); table.Columns.Add("address"); table.Columns.Add("contact"); table.Columns.Add("gender"); table.Columns.Add("dob"); table.Columns.Add("user_type"); foreach (User_details instance in objects) { table.Rows.Add(instance.Id, instance.User_id, instance.Fname, instance.Lname, instance.Email, instance.Address, instance.Contact, instance.Gender, instance.Dob, instance.User_type); }
+            return table;
+        }
+
+    }
+    public class User_details_view : User_details_view_support
+    {
+        Functions db = new Functions(); string id = "";
+        public string Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        string name = "";
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        string dob = "";
+        public string Dob
+        {
+            get { return dob; }
+            set { dob = value; }
+        }
+        string contact = "";
+        public string Contact
+        {
+            get { return contact; }
+            set { contact = value; }
+        }
+        string user_type = "";
+        public string User_type
+        {
+            get { return user_type; }
+            set { user_type = value; }
+        }
+        string speciality = "";
+        public string Speciality
+        {
+            get { return speciality; }
+            set { speciality = value; }
+        }
+        public User_details_view() { }
+        private void load(string query, string[] pars, string[] values)
+        {
+            this.id = "";
+            this.name = "";
+            this.dob = "";
+            this.contact = "";
+            this.user_type = "";
+            this.speciality = "";
+            foreach (System.Data.DataRow row in db.MysqlMulti(query, pars, values).Rows)
+            {
+                this.id = row["id"].ToString();
+                this.name = row["name"].ToString();
+                this.dob = row["dob"].ToString();
+                this.contact = row["contact"].ToString();
+                this.user_type = row["user_type"].ToString();
+                this.speciality = row["speciality"].ToString();
+            }
+        }
+
+        public User_details_view Load_record_with(Column column, LogicalOperator logicalOperator, string value)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            load(query, pars, values);
+            return this;
+        }
+        public User_details_view Load_record_with(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            load(query, pars, values);
+            return this;
+        }
+        public User_details_view insert(string id, string name, string dob, string contact, string user_type, string speciality)
+        {
+            string[] pars = { "id", "name", "dob", "contact", "user_type", "speciality" };
+            string[] values = { id, name, dob, contact, user_type, speciality };
+            db.MysqlPlain("INSERT INTO `user_details_view`(`id`, `name`, `dob`, `contact`, `user_type`, `speciality`) VALUES(@id, @name, @dob, @contact, @user_type, @speciality)", pars, values);
+            return this;
+        }
+        public List<User_details_view> Search_For(Column column, LogicalOperator logicalOperator, string value)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<User_details_view> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<User_details_view> Search_For(Column column, LogicalOperator logicalOperator, string value, Column order_column, Order order)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<User_details_view> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, Column order_column, Order order)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<User_details_view> Search_For(Column column, LogicalOperator logicalOperator, string value, int limit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<User_details_view> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, int limit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<User_details_view> Search_For(Column column, LogicalOperator logicalOperator, string value, int lowerLimit, int upperLimit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<User_details_view> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, int lowerLimit, int upperLimit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<User_details_view> Search_For(Column column, LogicalOperator logicalOperator, string value, Column order_column, Order order, int limit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<User_details_view> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, Column order_column, Order order, int limit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<User_details_view> Search_For(Column column, LogicalOperator logicalOperator, string value, Column order_column, Order order, int lowerLimit, int upperLimit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<User_details_view> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, Column order_column, Order order, int lowerLimit, int upperLimit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `user_details_view` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<User_details_view> getAllRecords()
+        {
+            string query = "SELECT * FROM `user_details_view`";
+            return createObjects(db.MysqlMulti(query));
+        }
+        public List<User_details_view> getAllRecords(Column order_column, Order order)
+        {
+            string query = "SELECT * FROM `user_details_view`";
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<User_details_view> getAllRecords(int limit)
+        {
+            string query = "SELECT * FROM `user_details_view`";
+            query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<User_details_view> getAllRecords(int lowerLimit, int upperLimit)
+        {
+            string query = "SELECT * FROM `user_details_view`";
+            query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<User_details_view> getAllRecords(Column order_column, Order order, int limit)
+        {
+            string query = "SELECT * FROM `user_details_view`";
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<User_details_view> getAllRecords(Column order_column, Order order, int lowerLimit, int upperLimit)
+        {
+            string query = "SELECT * FROM `user_details_view`";
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query));
+        }
+    }
+    public class User_details_view_support
+    {
+        public List<User_details_view> createObjects(System.Data.DataTable table)
+        {
+            List<User_details_view> objects = new List<User_details_view>();
+            foreach (System.Data.DataRow row in table.Rows)
+            {
+                User_details_view instance = new User_details_view();
+                instance.Id = row["id"].ToString();
+                instance.Name = row["name"].ToString();
+                instance.Dob = row["dob"].ToString();
+                instance.Contact = row["contact"].ToString();
+                instance.User_type = row["user_type"].ToString();
+                instance.Speciality = row["speciality"].ToString();
+                objects.Add(instance);
+            }
+            return objects;
+        }
+
+        public enum LogicalOperator { EQUAL_TO, NOT_EQUAL_TO, LESS_THAN, LESS_THAN_OR_EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL_TO, LIKE }
+        public string getLogicalOperatorSymbol(LogicalOperator operatorName)
+        {
+            if (operatorName == LogicalOperator.EQUAL_TO) { return "="; }
+            if (operatorName == LogicalOperator.NOT_EQUAL_TO) { return "!="; }
+            if (operatorName == LogicalOperator.LESS_THAN) { return "<"; }
+            if (operatorName == LogicalOperator.LESS_THAN_OR_EQUAL_TO) { return "<="; }
+            if (operatorName == LogicalOperator.GREATER_THAN) { return ">"; }
+            if (operatorName == LogicalOperator.GREATER_THAN_OR_EQUAL_TO) { return ">="; }
+            return "";
+        }
+        public enum Order { ASCENDING, DESCENDING }
+        public string getOrder(Order order)
+        {
+            if (order == Order.ASCENDING) { return "ASC"; }
+            if (order == Order.DESCENDING) { return "DESC"; }
+            return "ASC";
+        }
+        public enum Relation { AND, OR }
+        public enum Column { Id, Name, Dob, Contact, User_type, Speciality }
+        public string getEnumColumnDbName(Column column)
+        {
+            if (column == Column.Id) { return "id"; }
+            if (column == Column.Name) { return "name"; }
+            if (column == Column.Dob) { return "dob"; }
+            if (column == Column.Contact) { return "contact"; }
+            if (column == Column.User_type) { return "user_type"; }
+            if (column == Column.Speciality) { return "speciality"; }
+            return "";
+        }
+        public System.Data.DataTable createDataTable(List<User_details_view> objects)
+        {
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("id"); table.Columns.Add("name"); table.Columns.Add("dob"); table.Columns.Add("contact"); table.Columns.Add("user_type"); table.Columns.Add("speciality"); foreach (User_details_view instance in objects) { table.Rows.Add(instance.Id, instance.Name, instance.Dob, instance.Contact, instance.User_type, instance.Speciality); }
             return table;
         }
 

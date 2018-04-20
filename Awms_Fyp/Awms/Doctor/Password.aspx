@@ -4,6 +4,7 @@
 
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="body">
+    <asp:Literal runat="server" ID="MessageLiteral" />
     <form runat="server">
         <div class="card card-royal">
             <div class="card-header">

@@ -3,6 +3,7 @@
     New Doctor
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="body">
+    <asp:Literal runat="server" ID="MessageLiteral" />
     <div class="card card-warning">
         <div class="card-header">
             <h3>New Doctor</h3>
@@ -66,8 +67,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <div class="btn-group bootstrap-select form-control">
-                                                    <select runat="server" id="Select1" class="form-control selectpicker" data-dropup-auto="false" tabindex="-98">
-                                                        <option class="disable">Professionality</option>
+                                                    <select runat="server" id="professionSelect" class="form-control selectpicker" data-dropup-auto="false" tabindex="-98">
+                                                        <option class="disable">Profession</option>
                                                         <option>Dentist</option>
                                                         <option>Optician</option>
                                                         <option>Medical Officer</option>
@@ -113,7 +114,7 @@
                                                         <i class="fa fa-map-marker"></i>
                                                     </span>
                                                     <label class="control-label" for="userBox">Address</label>
-                                                    <textarea class="form-control" rows="1" id="textArea"></textarea>
+                                                    <textarea runat="server" class="form-control" rows="1" id="addressBox"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -133,4 +134,5 @@
             </form>
         </div>
     </div>
+
 </asp:Content>

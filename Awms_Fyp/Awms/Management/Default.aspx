@@ -10,7 +10,7 @@
         <div class="card-block">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card card-success">
+                    <div class="card card-warning">
                         <div class="card-header">
                             <h3 class="card-title">Admin(s)</h3>
                         </div>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card card-success">
+                    <div class="card card-warning">
                         <div class="card-header">
                             <h3 class="card-title">Doctor(s)</h3>
                         </div>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card card-success">
+                    <div class="card card-warning">
                         <div class="card-header">
                             <h3 class="card-title">Appointment(s)</h3>
                         </div>
@@ -42,55 +42,26 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card card-light">
-                        <div class="card-header">
-                            <h3 class="card-title">More Details</h3>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">User(s)</h3>
                         </div>
-                        <div class="card-block">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Admin(s)</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <table class="table table-border" id="admin_table">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Reg Number</th>
-                                                <th>Test One</th>
-                                                <th>Test Two</th>
-                                                <th>Coursework</th>
-                                                <th>Exam</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <asp:Literal runat="server" ID="marksLitera" />
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Doctor(s)</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <table class="table table-border" id="doc_table">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Reg Number</th>
-                                                <th>Test One</th>
-                                                <th>Test Two</th>
-                                                <th>Coursework</th>
-                                                <th>Exam</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <asp:Literal runat="server" ID="marksLiteral" />
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                        <div class="panel-body">
+                            <table class="table table-border" id="admin_table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Contact</th>
+                                        <th>Age</th>
+                                        <th>Type</th>
+                                        <th>Profession</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <asp:Literal runat="server" ID="UserLiteral" />
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -103,23 +74,11 @@
             $('#admin_table').DataTable({
                 "columns": [
                     { "data": "#" },
-                    { "data": "Reg_Number" },
-                    { "data": "Test_One" },
-                    { "data": "Test_Two" },
-                    { "data": "Coursework" },
-                    { "data": "Exam" }
-                ]
-            });
-        });
-        $(document).ready(function () {
-            $('#doc_table').DataTable({
-                "columns": [
-                    { "data": "#" },
-                    { "data": "Reg_Number" },
-                    { "data": "Test_One" },
-                    { "data": "Test_Two" },
-                    { "data": "Coursework" },
-                    { "data": "Exam" }
+                    { "data": "Name" },
+                    { "data": "Contact" },
+                    { "data": "Age" },
+                    { "data": "Type" },
+                    { "data": "Profession" }
                 ]
             });
         });

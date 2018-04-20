@@ -12,7 +12,7 @@ namespace Awms_Fyp.Awms.Account
         protected void Page_Load(object sender, EventArgs e)
         {
             Session.Clear();
-            Response.Redirect("~/awms/account/default.aspx");
+            Response.Redirect(new NavClass().Index);
         }
     }
 }

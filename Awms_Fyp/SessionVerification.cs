@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -7,7 +8,7 @@ namespace Awms_Fyp
 {
     public class SessionVerification : System.Web.UI.Page
     {
-        public string LoginKey => "&*>w!@~";
+        public string LoginKey => "&*>w!@~g";
         public string Username { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
@@ -44,6 +45,16 @@ namespace Awms_Fyp
                 case true: IsloggedIn = false; break;
                 default: IsloggedIn = true; break;
             }
+        }
+        public string GetImage(string itemUrl)
+        {
+            switch (string.IsNullOrEmpty(itemUrl))
+            {
+                case true: itemUrl = "noimage.jpg"; break;
+                default: break;
+            }
+            if (File.Exists(Server.MapPath($"~/Images/{itemUrl}"))) return "/" + itemUrl;
+            else { return "noimage.jpg"; }
         }
     }
     public class NavClass

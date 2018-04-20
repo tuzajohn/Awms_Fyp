@@ -12,11 +12,11 @@
             <div class="card-block">
                 <div class="row">
                     <div class="col-md-4">
-                        <asp:Image runat="server" CssClass="img-responsive" ID="profImage" ImageUrl="../../Images/noimage.jpg" /><br />
+                        <img class="img-responsive" id="profImage" src="../../Images/noimage.jpg" /><br />
                     </div>
                     <div class="col-md-8">
-                        <div class="form-group is-empty is-fileinput">
-                            <asp:FileUpload runat="server" ID="input" />
+                        <div class="form-group is-empty is-fileinput" style="min-height:200px;">
+                            <input type="file" runat="server" id="inputFile" />
                             <div class="input-group">
                                 <input readonly="" class="form-control" placeholder="Select image" type="text" />
                                 <span class="input-group-btn input-group-sm">
@@ -28,8 +28,22 @@
                         </div>
                     </div>
                 </div>
-                <a href="#" runat="server" id="saveBtn" class="btn btn-block btn-warning">Save image</a>
+                <a href="#" runat="server" id="saveBtn" class="btn btn-block btn-raised btn-warning">Save image</a>
             </div>
         </div>
     </form>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#profImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#body_body_inputFile").change(function () {
+            readURL(this);
+        });
+    </script>
 </asp:Content>

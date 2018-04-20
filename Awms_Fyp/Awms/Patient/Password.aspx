@@ -4,7 +4,8 @@
 
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="body">
-    <form runat="server">
+    <asp:literal runat="server" id="MessageLiteral" />
+    <form runat="server">        
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title">Change Password</h3>

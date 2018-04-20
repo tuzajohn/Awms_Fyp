@@ -14,6 +14,7 @@ namespace Awms_Fyp.Awms.Doctor
         {
             SV = new SessionVerification();
             user_linksLiteral.Text = SV.Name;
+            
         }
     }
 }

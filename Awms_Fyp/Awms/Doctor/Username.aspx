@@ -4,6 +4,7 @@
 
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="body">
+    <asp:Literal runat="server" ID="MessageLiteral" />
     <form runat="server">
         <div class="card card-royal">
             <div class="card-header">
@@ -17,10 +18,6 @@
                 <div class="form-group is-empty">
                     <label class="control-label" for="newusername">New Username</label>
                     <input runat="server" class="form-control" id="newusername" type="text" required="" />
-                </div>
-                <div class="form-group is-empty">
-                    <label class="control-label" for="password">Password</label>
-                    <input runat="server" class="form-control" id="password" type="password" required="" />
                 </div>
                 <a href="#" runat="server" id="saveUserBtn" class="btn btn-block btn-royal">Save</a>
             </div>

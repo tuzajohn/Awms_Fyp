@@ -13,22 +13,22 @@ namespace Awms_Fyp.Awms.Management {
     public partial class Doctor_Detail {
         
         /// <summary>
-        /// profImage control.
+        /// MessageLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image profImage;
+        protected global::System.Web.UI.WebControls.Literal MessageLiteral;
         
         /// <summary>
-        /// input control.
+        /// inputFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload input;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile inputFile;
         
         /// <summary>
         /// userBox control.

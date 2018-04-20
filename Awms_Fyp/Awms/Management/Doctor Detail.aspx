@@ -3,6 +3,7 @@
 
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="body">
+    <asp:Literal runat="server" ID="MessageLiteral" />
     <div class="card card-warning">
         <div class="card-header">
             <h3>New Doctor</h3>
@@ -15,13 +16,13 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <div class="card-block">
-                                        <div class="row">
+                                        <div class="row" style="min-height:200px;">
                                             <div class="col-md-4">
-                                                <asp:Image runat="server" CssClass="img-responsive" ID="profImage" ImageUrl="../../Images/noimage.jpg" /><br />
+                                                <img class="img-responsive" src="../../../Images/noimage.jpg" id="profImage" />
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="form-group is-empty is-fileinput">
-                                                    <asp:FileUpload runat="server" ID="input" />
+                                                    <input runat="server" type="file" id="inputFile" />
                                                     <div class="input-group">
                                                         <input readonly="" class="form-control" placeholder="Select profile image" type="text" />
                                                         <span class="input-group-btn input-group-sm">
@@ -81,7 +82,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="text-center ">
+                        <div class="col-md-12 text-center ">
                             <a href="#" runat="server" id="SaveBtn" class="btn btn-warning btn-block">Save<i class="fa fa-check"></i></a>
                         </div>
                     </div>
@@ -90,4 +91,18 @@
             </form>
         </div>
     </div>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#profImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#body_body_inputFile").change(function () {
+            readURL(this);
+        });
+    </script>
 </asp:Content>

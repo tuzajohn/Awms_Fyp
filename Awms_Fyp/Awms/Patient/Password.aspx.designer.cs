@@ -13,6 +13,15 @@ namespace Awms_Fyp.Awms.Patient {
     public partial class Password {
         
         /// <summary>
+        /// MessageLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal MessageLiteral;
+        
+        /// <summary>
         /// oldPass control.
         /// </summary>
         /// <remarks>

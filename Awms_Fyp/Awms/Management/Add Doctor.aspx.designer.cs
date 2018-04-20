@@ -13,6 +13,15 @@ namespace Awms_Fyp.Awms.Management {
     public partial class Add_Doctor {
         
         /// <summary>
+        /// MessageLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal MessageLiteral;
+        
+        /// <summary>
         /// fnameBox control.
         /// </summary>
         /// <remarks>
@@ -49,13 +58,13 @@ namespace Awms_Fyp.Awms.Management {
         protected global::System.Web.UI.HtmlControls.HtmlInputText contactBox;
         
         /// <summary>
-        /// Select1 control.
+        /// professionSelect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect Select1;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect professionSelect;
         
         /// <summary>
         /// dob control.
@@ -74,6 +83,15 @@ namespace Awms_Fyp.Awms.Management {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect genderSelect;
+        
+        /// <summary>
+        /// addressBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea addressBox;
         
         /// <summary>
         /// NxtBtn control.
