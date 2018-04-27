@@ -83,7 +83,7 @@
 
                     <div class="row">
                         <div class="col-md-12 text-center ">
-                            <a href="#" runat="server" id="SaveBtn" class="btn btn-warning btn-block">Save<i class="fa fa-check"></i></a>
+                            <a href="#" runat="server" id="SaveBtn" class="btn btn-raised btn-block btn-warning">Save<i class="fa fa-check"></i></a>
                         </div>
                     </div>
 

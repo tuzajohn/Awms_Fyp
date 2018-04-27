@@ -21,7 +21,7 @@
                             <div class="card-block">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <asp:Literal runat="server" ID="image" />
+                                        <asp:Literal runat="server" ID="ImageLiteral" />
                                     </div>
                                     <div class="col-md-12">
                                         <ul class="list-group">
@@ -44,11 +44,35 @@
                         <h3 class="card-title">Nav List</h3>
                     </div>
                     <div class="card-block">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href="../../doctor/home" class="btn btn-block btn-royal">Home</a>
-                                <a href="../../doctor/username" class="btn btn-block btn-royal">Change Username</a>
-                                <a href="../../doctor/password" class="btn btn-block btn-royal">Change Password</a>
+                        <div class="panel-group ms-collapse" id="accordion2" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-royal">
+                                <div class="panel-heading" role="tab" id="headingOne2">
+                                    <h4 class="panel-title">
+                                        <a class="withripple collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2" aria-expanded="false" aria-controls="collapseOne2">
+                                            <i class="zmdi zmdi-home"></i>Home
+                                                <div class="ripple-container"></div>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne2" aria-expanded="false" style="height: 0px;">
+                                    <div class="panel-body">
+                                        <a href="../../doctor/home" class="btn btn-block btn-raised btn-royal">Home</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-royal">
+                                <div class="panel-heading" role="tab" id="headingThree3">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed withripple" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
+                                            <i class="zmdi zmdi-settings"></i>Settings </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree2" aria-expanded="false">
+                                    <div class="panel-body">
+                                        <a href="../../doctor/username" class="btn btn-block btn-raised btn-royal">Change Username</a>
+                                        <a href="../../doctor/password" class="btn btn-block btn-raised btn-royal">Change Password</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

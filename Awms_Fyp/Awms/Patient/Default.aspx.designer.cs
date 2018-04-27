@@ -13,12 +13,39 @@ namespace Awms_Fyp.Awms.Patient {
     public partial class Default {
         
         /// <summary>
-        /// schedulAppBtn control.
+        /// MessageLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton schedulAppBtn;
+        protected global::System.Web.UI.WebControls.Literal MessageLiteral;
+        
+        /// <summary>
+        /// appDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl appDate;
+        
+        /// <summary>
+        /// messageBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea messageBox;
+        
+        /// <summary>
+        /// saveBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton saveBtn;
     }
 }

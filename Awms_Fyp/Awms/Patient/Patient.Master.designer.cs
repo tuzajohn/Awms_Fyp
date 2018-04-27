@@ -22,13 +22,13 @@ namespace Awms_Fyp.Awms.Patient {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder title;
         
         /// <summary>
-        /// image control.
+        /// ImageLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal image;
+        protected global::System.Web.UI.WebControls.Literal ImageLiteral;
         
         /// <summary>
         /// detailsLiteral control.
@@ -47,6 +47,15 @@ namespace Awms_Fyp.Awms.Patient {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal user_linksLiteral;
+        
+        /// <summary>
+        /// piclink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor piclink;
         
         /// <summary>
         /// body control.

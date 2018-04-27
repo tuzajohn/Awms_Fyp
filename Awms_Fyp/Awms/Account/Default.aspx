@@ -33,8 +33,8 @@
                             </div>
                             <div class="row ">
                                 <div class="col-xs-5">
-                                    <small><a href="register.aspx">Don't have an account</a></small><br />
-                                    <small><a href="recover.aspx">Recover password</a></small>
+                                    <small><a href="register">Don't have an account</a></small><br />
+                                    <small><a href="recover">Recover password</a></small>
                                 </div>
                                 <div class="col-xs-7">
                                     <button runat="server" id="loginBtn" class="btn btn-raised btn-primary pull-right">Login</button>

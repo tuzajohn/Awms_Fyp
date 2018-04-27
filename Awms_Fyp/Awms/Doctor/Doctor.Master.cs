@@ -13,8 +13,12 @@ namespace Awms_Fyp.Awms.Doctor
         protected void Page_Load(object sender, EventArgs e)
         {
             SV = new SessionVerification();
+            LoadDetails();
+        }
+        private void LoadDetails()
+        {
             user_linksLiteral.Text = SV.Name;
-            
+            ImageLiteral.Text = $"<img src='../../Images/{SV.GetImage(SV.ProfileImage)}' alt='' class='img-responsive' />";
         }
     }
 }

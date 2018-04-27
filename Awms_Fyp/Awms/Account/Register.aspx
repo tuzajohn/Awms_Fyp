@@ -64,12 +64,14 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group label-floating">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </span>
-                                            <label class="control-label" for="userBox">Date of Birth</label>
-                                            <input runat="server" id="datePicker" type="text" class="form-control"/>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                                <label class="control-label" for="userBox">Date of Birth</label>
+                                                <input runat="server" id="dob" type="date" class="form-control" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -139,7 +141,7 @@
         </div>
     </div>
     <div class="text-center animated fadeInUp animation-delay-7">
-        <a href="../account/default.aspx" class="btn btn-white">
+        <a href="login" class="btn btn-white">
             <i class="zmdi zmdi-home"></i>Go Home</a>
     </div>
 </asp:Content>

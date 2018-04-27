@@ -126,7 +126,7 @@
 
                     <div class="row">
                         <div class="text-center ">
-                            <a href="#" runat="server" id="NxtBtn" class="btn btn-royal btn-block">Next<i class="fa fa-arrow-right"></i></a>
+                            <a href="#" runat="server" id="NxtBtn" class="btn btn-raised btn-block btn-warning">Next<i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
 

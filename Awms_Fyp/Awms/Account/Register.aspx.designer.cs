@@ -58,13 +58,13 @@ namespace Awms_Fyp.Awms.Account {
         protected global::System.Web.UI.HtmlControls.HtmlInputText contactBox;
         
         /// <summary>
-        /// datePicker control.
+        /// dob control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText datePicker;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dob;
         
         /// <summary>
         /// genderSelect control.

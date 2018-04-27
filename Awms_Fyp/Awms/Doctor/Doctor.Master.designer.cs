@@ -31,13 +31,13 @@ namespace Awms_Fyp.Awms.Doctor {
         protected global::System.Web.UI.WebControls.Literal MessageLiteral;
         
         /// <summary>
-        /// image control.
+        /// ImageLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal image;
+        protected global::System.Web.UI.WebControls.Literal ImageLiteral;
         
         /// <summary>
         /// detailsLiteral control.

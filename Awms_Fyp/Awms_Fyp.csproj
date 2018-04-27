@@ -2891,6 +2891,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScheduleClass.cs" />
     <Compile Include="SessionVerification.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

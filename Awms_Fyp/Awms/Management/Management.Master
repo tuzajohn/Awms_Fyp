@@ -11,7 +11,7 @@
             <div class="col-md-push-9 col-md-3">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-primary">
+                        <div class="card card-warning">
                             <div class="card-header">
                                 <h3 class="card-title">Profile</h3>
                             </div>
@@ -26,7 +26,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <hr class="color dashed" />
+                                <hr class="color color-warning dashed " />
                                 <div class="">
                                     <ul class="list-group">
                                         <asp:Literal runat="server" ID="user_linksLiteral" />
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card card-primary">
+                <div class="card card-warning">
                     <div class="card-header">
                         <h3 class="card-title">Nav List</h3>
                     </div>
@@ -45,7 +45,7 @@
                             <div class="col-md-12">
                             </div>
                             <div class="panel-group ms-collapse" id="accordion2" role="tablist" aria-multiselectable="true">
-                                <div class="panel panel-primary">
+                                <div class="panel panel-warning">
                                     <div class="panel-heading" role="tab" id="headingOne2">
                                         <h4 class="panel-title">
                                             <a class="withripple collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2" aria-expanded="false" aria-controls="collapseOne2">
@@ -60,7 +60,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="panel panel-primary">
+                                <div class="panel panel-warning">
                                     <div class="panel-heading" role="tab" id="headingTwo2">
                                         <h4 class="panel-title">
                                             <a class="collapsed withripple" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
@@ -74,7 +74,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="panel panel-primary">
+                                <div class="panel panel-warning">
                                     <div class="panel-heading" role="tab" id="headingThree3">
                                         <h4 class="panel-title">
                                             <a class="collapsed withripple" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">

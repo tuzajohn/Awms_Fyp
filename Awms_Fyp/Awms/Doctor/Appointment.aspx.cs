@@ -15,6 +15,8 @@ namespace Awms_Fyp.Awms.Doctor
         {
             SV = new SessionVerification();
             Check();
+            if (Session["message"] != null) { MessageLiteral.Text = Session["message"].ToString(); Session["message"] = null; }
+            Denied();
         }
         private void Check()
         {
@@ -29,6 +31,14 @@ namespace Awms_Fyp.Awms.Doctor
                     Response.Redirect(nav.Logout);
                 }
             }
+        }
+        private void Denied()
+        {
+            SendBtn.ServerClick += delegate
+            {
+                
+                Response.Redirect(nav.DoctorHome);
+            };
         }
     }
 }

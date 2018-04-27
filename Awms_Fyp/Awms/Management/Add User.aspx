@@ -9,7 +9,7 @@
         <div class="card-block">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card card-royal">
+                    <div class="card card-warning">
                         <div class="card-header">
                             <h2><i class="fa fa-user-plus"></i></h2> 
                         </div>
@@ -134,7 +134,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button runat="server" id="createBtn" class="btn btn-raised btn-block btn-primary">Create Now</button>
+                                    <button runat="server" id="createBtn" class="btn btn-raised btn-block btn-warning">Create Now</button>
                                 </fieldset>
                             </form>
                         </div>

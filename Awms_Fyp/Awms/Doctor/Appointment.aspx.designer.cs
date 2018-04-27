@@ -13,6 +13,15 @@ namespace Awms_Fyp.Awms.Doctor {
     public partial class Appointment {
         
         /// <summary>
+        /// MessageLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal MessageLiteral;
+        
+        /// <summary>
         /// AppointmentLiteral control.
         /// </summary>
         /// <remarks>
@@ -29,5 +38,14 @@ namespace Awms_Fyp.Awms.Doctor {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText SubjectBox;
+        
+        /// <summary>
+        /// SendBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton SendBtn;
     }
 }

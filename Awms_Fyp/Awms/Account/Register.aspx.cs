@@ -38,7 +38,7 @@ namespace Awms_Fyp.Awms.Account
                         {
                             var uDetails = new User_details();
                             logins.insert(userBox.Value, enc.GetMD5(enc.StrongEncrypt(passBox.Value)), DateTime.Now.ToString("dd-MM-yyyy"), "3");
-                            uDetails.insert(logins.Id, fnameBox.Value, lname.Value, emailBox.Value, addressBox.Value, contactBox.Value, genderSelect.Value, datePicker.Value, "patient");
+                            uDetails.insert(logins.Id, fnameBox.Value, lname.Value, emailBox.Value, addressBox.Value, contactBox.Value, genderSelect.Value, dob.Value, "patient");
                             Session["message"] = elements.GetMesage($"Welcome {uDetails.Fname} {uDetails.Lname}, you can now login.", HtmlElements.MessageType.SUCCESS, HtmlElements.UserType.ALL);
                             redirect = nav.Index;
                         }

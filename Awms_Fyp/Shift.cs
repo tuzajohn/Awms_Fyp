@@ -11,7 +11,7 @@ namespace Awms_Fyp
         {
 
         }
-        public Shift(string speciality)
+        public Shift(string Mappings)
         {
 
         }

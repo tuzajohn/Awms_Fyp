@@ -1,13 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Appointment.aspx.cs" Inherits="Awms_Fyp.Awms.Doctor.Appointment" MasterPageFile="~/Awms/Doctor/Doctor.Master"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Appointment.aspx.cs" Inherits="Awms_Fyp.Awms.Doctor.Appointment" MasterPageFile="~/Awms/Doctor/Doctor.Master"%>
 
 <asp:Content runat="server" ContentPlaceHolderID="title">
 
 </asp:Content>
 
 <asp:Content runat="server" ContentPlaceHolderID="body">
+    <asp:Literal runat="server" ID="MessageLiteral" />
     <div class="card card-royal">
         <div class="card-header">
-            <h3>Appointment from [<asp:Literal runat="server" ID="AppointmentLiteral" />]</h3>
+            <h3>Appointment from [<asp:Literal runat="server" ID="AppointmentLiteral" /> John Tuza ]</h3>
         </div>
         <div class="card-block">
             <div class="card">
@@ -18,11 +19,11 @@
                     </a>
                     <a href="javascript:void(0)" class="list-group-item withripple">
                         <i class="zmdi zmdi-cast"></i><b>Description</b>
-                            <p class="pull-right">mnmdsbfnm  sdnbfnmsd jhgjdgfsdjhfgsdjhfgsdjhfgsdjhgfsdjhgf djsfgsdjhgf djsfgsdjfjds fdjhsgfsdjhfg sdjhfgsdjhf hsdgf sdj</p>
+                            <p class="pull-right">I have been experiencing severe headache, and fever. I thought it would go eventually but It has been two weeks now.</p>
                     </a>
                     <a href="javascript:void(0)" class="list-group-item withripple">
                         <i class="zmdi zmdi-map"></i><b>Address</b>
-                        <p class="pull-right">mnmdsbfnm  sdnbfnmsd jhgjdgfsdjhfgsdjhfgsdjhfgsdjhgfsdjhgf djsfgsdjhgf djsfgsdjfjds fdjhsgfsdjhfg sdjhfgsdjhf hsdgf sdj</p>
+                        <p class="pull-right">Mutungo Biina. Butabika road.</p>
                     </a>
                     <a href="javascript:void(0)" class="list-group-item withripple">
                         <i class="zmdi zmdi-time"></i><b>Date and Time</b>
@@ -50,14 +51,14 @@
                                             <div class="form-group">
                                                 <label for="SubjectBox" class="col-md-2 control-label">Subject</label>
                                                 <div class="col-md-10">
-                                                    <input runat="server" class="form-control" id="SubjectBox" placeholder="Subject.."/>
+                                                    <input runat="server" class="form-control" id="SubjectBox" placeholder="Subject.." required="required"/>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="ReasonBox" class="col-md-2 control-label">Reason</label>
 
                                                 <div class="col-md-10">
-                                                    <textarea class="form-control" rows="4" id="ReasonBox" placeholder="Reason for denial!"></textarea>
+                                                    <textarea class="form-control" rows="4" id="ReasonBox" placeholder="Reason for denial!" required="required"></textarea>
                                                 </div>
                                             </div>
                                         </fieldset>
@@ -68,7 +69,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn  btn-warning">Send</button>
+                            <button runat="server" id="SendBtn" class="btn  btn-warning">Send</button>
                         </div>
                     </div>
                 </div>

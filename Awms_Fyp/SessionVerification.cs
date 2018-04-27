@@ -56,6 +56,7 @@ namespace Awms_Fyp
             if (File.Exists(Server.MapPath($"~/Images/{itemUrl}"))) return "/" + itemUrl;
             else { return "noimage.jpg"; }
         }
+        
     }
     public class NavClass
     {

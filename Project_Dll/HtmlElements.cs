@@ -28,7 +28,6 @@ namespace Project_Dll
                 case MessageType.ERROR: type_ = "danger"; break;
                 default: break;
             }
-
             var d = string.Empty;
             d = $@"
             <div class='alert alert-{type_} alert-light alert-dismissible' role='alert'>
@@ -37,7 +36,6 @@ namespace Project_Dll
                 </button>
                 <strong> {message}</strong> 
             </div>";
-
             return d;
         }
     }
