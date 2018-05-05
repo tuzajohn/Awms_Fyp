@@ -53,7 +53,11 @@
                     </div>
                     <div id="collapseTwo12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo12" aria-expanded="false">
                         <div class="panel-body">
-                            <iframe class="map-top col-md-12" width="598" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCkR2oB7b3i_NiKQp4sqhCZ18i3pT8D7SI&q=Makerere+University,Uganda"></iframe>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <iframe class="map-top col-md-12" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCkR2oB7b3i_NiKQp4sqhCZ18i3pT8D7SI&q=Makerere+University,Uganda"></iframe>
+                                </div>
+                            </div>                            
                         </div>
                     </div>
                 </div>

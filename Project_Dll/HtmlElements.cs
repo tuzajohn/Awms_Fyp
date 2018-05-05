@@ -38,5 +38,49 @@ namespace Project_Dll
             </div>";
             return d;
         }
+        public string GetDoctShift(List<Doctor_shift_table> shift_Table)
+        {
+            var d = string.Empty;
+            if(shift_Table.Count <= 0) { return ""; }
+            #region table shit
+            d = $@"
+            <div class='row'>
+                <div class='col-md-12'>
+                    <div class='table-responsive'>
+                        <table class='table table-bordered'>
+                            <thead>
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Session 1</th>
+                                    <th>Session 2</th>
+                                    <th>Session 3</th>
+                                    <th>Session 4</th>
+                                    <th>Session 5</th>
+                                    <th>Session 6</th>
+                                </tr>
+                            </thead>
+                            <tbody>";
+
+            foreach (var shift in shift_Table)
+            {
+                d += "<tr>" +
+                    "    <td>1</td>" +
+                    "    <td>Table cell</td>" +
+                    "    <td>Table cell</td>" +
+                    "    <td>Table cell</td>" +
+                    "    <td>Table cell</td>" +
+                    "    <td>Table cell</td>" +
+                    "    <td>Table cell</td>";
+            }
+
+            d += $@"
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>";
+            #endregion
+            return d;
+        }
     }
 }

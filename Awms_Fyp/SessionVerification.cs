@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -20,10 +21,12 @@ namespace Awms_Fyp
         public string ProfileImage { get; set; }
         public string Status { get; set; }
         public bool IsloggedIn { get; set; }
+        public string ShiftFilePath { get; set; }
         public SessionVerification()
         {
             try
             {
+                ShiftFilePath = Server.MapPath("~/ShiftFile.txt");
                 Uid = Session["uid"].ToString();
                 Status = Session["staus"].ToString();
                 Name = Session["name"].ToString();

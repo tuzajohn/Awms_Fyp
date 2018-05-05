@@ -86,6 +86,7 @@
     <Content Include="Awms\Management\Management.Master" />
     <Content Include="Awms\Main.Master" />
     <Content Include="Awms\Doctor\Doctor.Master" />
+    <Content Include="Awms\Management\User.aspx" />
     <Content Include="Awms\Patient\Password.aspx" />
     <Content Include="Awms\Patient\Patient.Master" />
     <None Include="packages.config" />
@@ -95,6 +96,8 @@
     <Content Include="Awms\Patient\Default.aspx" />
     <Content Include="Awms\Patient\Picture.aspx" />
     <Content Include="Awms\Patient\Username.aspx" />
+    <Content Include="DataSet.txt" />
+    <Content Include="ShiftFile.txt" />
     <Content Include="Global.asax" />
     <Content Include="Images\noimage.jpg" />
     <Content Include="Styles\assets\fonts\fontawesome-webfont.eot" />
@@ -124,6 +127,7 @@
     <Content Include="Styles\assets\plugins\revolution\revolution\fonts\revicons\revicons.ttf" />
     <Content Include="Styles\assets\plugins\revolution\revolution\fonts\revicons\revicons.woff" />
     <Content Include="Styles\assets\plugins\revolution\revolution\info.cfg" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2844,6 +2848,13 @@
     </Compile>
     <Compile Include="Awms\Management\Picture.aspx.designer.cs">
       <DependentUpon>Picture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Management\User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Management\User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
     </Compile>
     <Compile Include="Awms\Management\Username.aspx.cs">
       <DependentUpon>Username.aspx</DependentUpon>

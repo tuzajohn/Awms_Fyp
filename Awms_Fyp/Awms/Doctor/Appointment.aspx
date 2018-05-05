@@ -8,26 +8,26 @@
     <asp:Literal runat="server" ID="MessageLiteral" />
     <div class="card card-royal">
         <div class="card-header">
-            <h3>Appointment from [<asp:Literal runat="server" ID="AppointmentLiteral" /> John Tuza ]</h3>
+            <h3>Appointment ref:- [<asp:Literal runat="server" ID="AppointmentLiteral" />]</h3>
         </div>
         <div class="card-block">
             <div class="card">
                 <div class="list-group">
                     <a href="javascript:void(0)" class="list-group-item withripple active">
                         <i class="zmdi zmdi-favorite"></i>Name
-                            <p class="pull-right">John Tuza</p>
+                            <p class="pull-right" runat="server" id="name">John Tuza</p>
                     </a>
                     <a href="javascript:void(0)" class="list-group-item withripple">
                         <i class="zmdi zmdi-cast"></i><b>Description</b>
-                            <p class="pull-right">I have been experiencing severe headache, and fever. I thought it would go eventually but It has been two weeks now.</p>
+                            <p class="pull-right" runat="server" id="desc">I have been experiencing severe headache, and fever. I thought it would go eventually but It has been two weeks now.</p>
                     </a>
                     <a href="javascript:void(0)" class="list-group-item withripple">
                         <i class="zmdi zmdi-map"></i><b>Address</b>
-                        <p class="pull-right">Mutungo Biina. Butabika road.</p>
+                        <p class="pull-right" runat="server" id="address">Mutungo Biina. Butabika road.</p>
                     </a>
                     <a href="javascript:void(0)" class="list-group-item withripple">
                         <i class="zmdi zmdi-time"></i><b>Date and Time</b>
-                        <p class="pull-right">Tuesday, 23 April 2018 17:00</p>
+                        <p class="pull-right" runat="server" id="dTime">Tuesday, 23 April 2018 17:00</p>
                     </a>
                     <div class="btn-group btn-group-justified">
                         <a href="#" class="btn btn-success">Accept</a>

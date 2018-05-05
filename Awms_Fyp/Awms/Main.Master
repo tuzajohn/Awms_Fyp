@@ -44,11 +44,6 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                            <a href="awms/account/default.aspx" class="dropdown-toggle animated fadeIn animation-delay-4" data-name="home">Home
-                  <i class="zmdi zmdi-home"></i>
-                            </a>
-                        </li>
                         <li runat="server" class="dropdown" id="logIn">
                             <a href="../../login" class="dropdown-toggle animated fadeIn animation-delay-4" data-name="log">Login
                   <i class="zmdi zmdi-account"></i>
@@ -110,16 +105,12 @@
                 </div>
             </header>
             <ul class="ms-slidebar-menu" id="slidebar-menu" role="tablist" aria-multiselectable="true">
-                <li>
-                    <a href="../../mbtc/default.aspx" class="withripple">
-                        <i class="zmdi zmdi-home"></i>Home</a>
-                </li>
                 <li runat="server" id="logI1">
-                    <a href="../../mbtc/account/login.aspx" class="">
+                    <a href="../../login" class="">
                         <i class="zmdi zmdi-account"></i>Login</a>
                 </li>
                 <li runat="server" id="logO1">
-                    <a href="../../mbtc/account/logout.aspx" class="">
+                    <a href="../../logout" class="">
                         <i class="zmdi zmdi-power-setting"></i>Logout</a>
                 </li>
             </ul>

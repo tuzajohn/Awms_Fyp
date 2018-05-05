@@ -18,9 +18,11 @@ namespace Awms_Fyp.Awms.Patient
         Dictionary<string, int> pairs;
         MyCustoms customs = new MyCustoms();
         ScheduleClass schedule = new ScheduleClass();
+        Shift s;
         protected void Page_Load(object sender, EventArgs e)
         {
             SV = new SessionVerification();
+            s = new Shift();
             dictionary = new Dictionary<string, List<string>>();
             if(Session["message"] != null) { MessageLiteral.Text = Session["message"].ToString(); Session["message"] = null; }
             Check();
@@ -53,17 +55,19 @@ namespace Awms_Fyp.Awms.Patient
                     foreach (var words in keywords_Tables)
                     {
                         List<string> MyDocList = new List<string>();
-                        if (words.Symptom.Contains(',')) { txt = words.Symptom.Replace(',', ' '); }
-                        else { txt = words.Symptom; }
-                        var txtArray = txt.Split();
+                        var txtArray = words.Symptom.Replace(",", "").Split();
                         for (int i = 0; i < txtArray.Length; i++) { MyDocList.Add(txtArray[i]); }
                         var docType = new Speciality_table().Load_record_with(Speciality_table_support.Column.Doctor_id, Speciality_table_support.LogicalOperator.EQUAL_TO, words.Doctor_id);
                         dictionary.Add(docType.Speciality, MyDocList);
                     }
-                    
-                    var dic = new Dictionary<DateTime, Dictionary<string, List<string>>>();
-                    dic.Add(date, dictionary);
-                    schedule.SetAppointment(date, dic);
+                    var appointments = new Appointment().Search_For(Appointment_support.Column.Schedule_date, Appointment_support.LogicalOperator.GREATER_THAN_OR_EQUAL_TO, date.ToString("yyyy-MM-dd"));
+
+                    var appDictionary = new Dictionary<DateTime, Dictionary<string, List<string>>>();
+                    foreach (var app_ in appointments) { appDictionary.Add(DateTime.Parse(app_.Schedule_date), dictionary); }
+
+                    s = new Shift(SV.ShiftFilePath);
+
+                    schedule.SetAppointment(date, appDictionary);
                     //appTable.insert(SV.Uid, "doctor id", appDate.Value, messageBox.Value, SV.Status, DateTime.Now.ToString("yyyy-MM-dd"));
                     Session["message"] = elements.GetMesage("Appointment was successfully scheduled.", HtmlElements.MessageType.SUCCESS, HtmlElements.UserType.ALL);
                 }

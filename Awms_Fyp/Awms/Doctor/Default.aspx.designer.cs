@@ -13,21 +13,21 @@ namespace Awms_Fyp.Awms.Doctor {
     public partial class Default {
         
         /// <summary>
-        /// NEwAppointmentsLiteral control.
+        /// NewAppointmentsLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal NEwAppointmentsLiteral;
+        protected global::System.Web.UI.WebControls.Literal NewAppointmentsLiteral;
         
         /// <summary>
-        /// marksLitera control.
+        /// AppLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal marksLitera;
+        protected global::System.Web.UI.WebControls.Literal AppLiteral;
     }
 }

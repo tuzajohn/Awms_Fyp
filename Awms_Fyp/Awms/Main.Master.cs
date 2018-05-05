@@ -23,12 +23,16 @@ namespace Awms_Fyp.Awms
             if (!string.IsNullOrEmpty(SV.Uid))
             {
                 logIn.Style.Add("display", "none");
+                logI1.Style.Add("display", "none");
                 logOut.Style.Remove("display");
+                logO1.Style.Remove("display");
             }
             else
             {
                 logIn.Style.Remove("display");
+                logI1.Style.Remove("display");
                 logOut.Style.Add("display", "none");
+                logO1.Style.Add("display", "none");
             }
         }
         private void StyleScript(string domain)

@@ -7,81 +7,90 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Awms_Fyp.Awms.Doctor {
+namespace Awms_Fyp.Awms.Management {
     
     
-    public partial class Appointment {
+    public partial class User {
         
         /// <summary>
-        /// MessageLiteral control.
+        /// NameLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal MessageLiteral;
+        protected global::System.Web.UI.WebControls.Literal NameLiteral;
         
         /// <summary>
-        /// AppointmentLiteral control.
+        /// ProfPicLiteral control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal AppointmentLiteral;
+        protected global::System.Web.UI.WebControls.Literal ProfPicLiteral;
         
         /// <summary>
-        /// name control.
+        /// fname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl name;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl fname;
         
         /// <summary>
-        /// desc control.
+        /// dob control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl desc;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dob;
         
         /// <summary>
-        /// address control.
+        /// userTpe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl address;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl userTpe;
         
         /// <summary>
-        /// dTime control.
+        /// lname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dTime;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lname;
         
         /// <summary>
-        /// SubjectBox control.
+        /// contact control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText SubjectBox;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contact;
         
         /// <summary>
-        /// SendBtn control.
+        /// speciality control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton SendBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl speciality;
+        
+        /// <summary>
+        /// ShiftTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ShiftTable;
     }
 }

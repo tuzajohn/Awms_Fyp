@@ -13,10 +13,10 @@ namespace Awms_Fyp
         public ScheduleClass()
         {
 
-        }
+        }//speciality, dataset for type
         public (DateTime time, string docName) SetAppointment(DateTime selectedDate, Dictionary<DateTime, Dictionary<string, List<string>>> appTable)
         {
-
+            
             return (DateTime.Now, null);
         }
         private void Scan(string type, DateTime dayOfShift, List<Speciality_table> docTypeInDay)

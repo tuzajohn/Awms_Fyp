@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Project_Dll;
+using Customs;
 
 namespace Awms_Fyp.Awms.Management
 {
@@ -12,9 +13,11 @@ namespace Awms_Fyp.Awms.Management
     {
         SessionVerification SV;
         NavClass nav = new NavClass();
+        Encryption enc;
         protected void Page_Load(object sender, EventArgs e)
         {
             SV = new SessionVerification();
+            enc = new Encryption() { Key = SV.LoginKey };
             Check();
             Load_();
         }
@@ -41,7 +44,7 @@ namespace Awms_Fyp.Awms.Management
             {
                 index++;
                 var age = (Math.Floor((DateTime.Now - DateTime.Parse(person.Dob)).TotalSeconds / 31556952)).ToString();
-                d += Table(index.ToString(), person.Name, IfEmpty(person.Contact), age, person.User_type, IfEmpty(person.Speciality));
+                d += Table(index.ToString(), enc.EncryptString(person.Id, SV.LoginKey), person.Name, IfEmpty(person.Contact), age, person.User_type, IfEmpty(person.Speciality));
             }
             UserLiteral.Text = d;
         }
@@ -50,10 +53,10 @@ namespace Awms_Fyp.Awms.Management
             if (string.IsNullOrEmpty(txt)) { return "N/A"; }
             return txt;
         }
-        string Table(string index, string name, string contact, string age, string type, string profession)
+        string Table(string index, string id, string name, string contact, string age, string type, string profession)
         {
             var d = string.Empty;
-            d = $"<tr><td>{index}</td><td>{name}</td><td>{contact}</td><td>{age}</td><td>{type}</td><td>{profession}</td></tr>";
+            d = $"<tr><td>{index}</td><td><a href='../../management/user/{id}'>{name}</a></td><td>{contact}</td><td>{age}</td><td>{type}</td><td>{profession}</td></tr>";
             return d;
         }
 
