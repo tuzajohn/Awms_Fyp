@@ -488,6 +488,442 @@ namespace Project_Dll
         }
 
     }
+    public class Days_of_week : Days_of_week_support
+    {
+        Functions db = new Functions(); string id = "";
+        public string Id
+        {
+            get { return id; }
+            set { updateField("id", value, id); id = value; }
+        }
+        string day = "";
+        public string Day
+        {
+            get { return day; }
+            set { updateField("day", value, id); day = value; }
+        }
+        string short_name = "";
+        public string Short_name
+        {
+            get { return short_name; }
+            set { updateField("short_name", value, id); short_name = value; }
+        }
+        public Days_of_week() { }
+        public Days_of_week(string id) { loadData(id); }
+        private Days_of_week loadData(string id)
+        {
+            string[] pars = { "value" };
+            string[] values = { id };
+            foreach (System.Data.DataRow row in db.MysqlMulti("SELECT * FROM `days_of_week` WHERE `id` = @value", pars, values).Rows)
+            {
+                this.id = row["id"].ToString();
+                this.day = row["day"].ToString();
+                this.short_name = row["short_name"].ToString();
+            }
+            return this;
+        }
+
+        private void load(string query, string[] pars, string[] values)
+        {
+            this.id = "";
+            this.day = "";
+            this.short_name = "";
+            foreach (System.Data.DataRow row in db.MysqlMulti(query, pars, values).Rows)
+            {
+                this.id = row["id"].ToString();
+                this.day = row["day"].ToString();
+                this.short_name = row["short_name"].ToString();
+            }
+        }
+
+        public Days_of_week Load_record_with(Column column, LogicalOperator logicalOperator, string value)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            load(query, pars, values);
+            return this;
+        }
+        public Days_of_week Load_record_with(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            load(query, pars, values);
+            return this;
+        }
+        public Days_of_week updateField(string fieldName, string value, string id)
+        {
+            string[] pars = { "value" };
+            string[] values = { value };
+            db.MysqlPlain("UPDATE `days_of_week` SET " + fieldName + " = @value WHERE `id` = " + id + "", pars, values);
+            loadData(id); return this;
+        }
+
+        public Days_of_week updateRow(string id, string day, string short_name)
+        {
+            string[] pars = { "id", "day", "short_name" };
+            string[] values = { id, day, short_name };
+            db.MysqlPlain("UPDATE `days_of_week` SET `id` = @id, `day` = @day, `short_name` = @short_name WHERE `id` = @id", pars, values);
+            loadData(id);
+            return this;
+        }
+        public Days_of_week insert(string day, string short_name)
+        {
+            string[] pars = { "day", "short_name" };
+            string[] values = { day, short_name };
+            db.MysqlPlain("INSERT INTO `days_of_week`(`day`, `short_name`) VALUES(@day, @short_name)", pars, values);
+            loadData(db.getMaxID("days_of_week"));
+            return this;
+        }
+        public void delete(string id)
+        {
+            string[] pars = { "value" };
+            string[] values = { id };
+            db.MysqlPlain("DELETE FROM `days_of_week` WHERE `id` = @value", pars, values);
+            loadData(id); id = "";
+        }
+        public List<Days_of_week> Search_For(Column column, LogicalOperator logicalOperator, string value)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Days_of_week> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Days_of_week> Search_For(Column column, LogicalOperator logicalOperator, string value, Column order_column, Order order)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Days_of_week> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, Column order_column, Order order)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Days_of_week> Search_For(Column column, LogicalOperator logicalOperator, string value, int limit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Days_of_week> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, int limit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Days_of_week> Search_For(Column column, LogicalOperator logicalOperator, string value, int lowerLimit, int upperLimit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Days_of_week> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, int lowerLimit, int upperLimit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Days_of_week> Search_For(Column column, LogicalOperator logicalOperator, string value, Column order_column, Order order, int limit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Days_of_week> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, Column order_column, Order order, int limit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Days_of_week> Search_For(Column column, LogicalOperator logicalOperator, string value, Column order_column, Order order, int lowerLimit, int upperLimit)
+        {
+            string columnName = getEnumColumnDbName(column); string[] pars = { "value" };
+            string[] values = { value };
+            string query = "";
+            if (logicalOperator != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator); query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` " + op + " @value";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName + "` LIKE CONCAT('%', @value, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Days_of_week> Search_For(Column column1, LogicalOperator logicalOperator1, string value1, Relation relation, Column column2, LogicalOperator logicalOperator2, string value2, Column order_column, Order order, int lowerLimit, int upperLimit)
+        {
+            string columnName1 = getEnumColumnDbName(column1), columnName2 = getEnumColumnDbName(column2); string[] pars = { "value1", "value2" };
+            string[] values = { value1, value2 };
+            string query = "";
+            if (logicalOperator1 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator1); query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` " + op + " @value1";
+            }
+            else
+            {
+                query = "SELECT * FROM `days_of_week` WHERE `" + columnName1 + "` LIKE CONCAT('%', @value1, '%')";
+            }
+            query += " ";
+            if (logicalOperator2 != LogicalOperator.LIKE)
+            {
+                string op = getLogicalOperatorSymbol(logicalOperator2); query += relation.ToString() + " `" + columnName2 + "` " + op + " @value2";
+            }
+            else
+            {
+                query += relation.ToString() + " `" + columnName2 + "` LIKE CONCAT('%', @value2, '%')";
+            }
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query, pars, values));
+        }
+        public List<Days_of_week> getAllRecords()
+        {
+            string query = "SELECT * FROM `days_of_week`";
+            return createObjects(db.MysqlMulti(query));
+        }
+        public List<Days_of_week> getAllRecords(Column order_column, Order order)
+        {
+            string query = "SELECT * FROM `days_of_week`";
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<Days_of_week> getAllRecords(int limit)
+        {
+            string query = "SELECT * FROM `days_of_week`";
+            query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<Days_of_week> getAllRecords(int lowerLimit, int upperLimit)
+        {
+            string query = "SELECT * FROM `days_of_week`";
+            query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<Days_of_week> getAllRecords(Column order_column, Order order, int limit)
+        {
+            string query = "SELECT * FROM `days_of_week`";
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + limit + ""; return createObjects(db.MysqlMulti(query));
+        }
+        public List<Days_of_week> getAllRecords(Column order_column, Order order, int lowerLimit, int upperLimit)
+        {
+            string query = "SELECT * FROM `days_of_week`";
+            string orderCol = getEnumColumnDbName(order_column); query += " ORDER BY `" + orderCol + "` " + getOrder(order) + ""; query += " LIMIT " + lowerLimit + ", " + upperLimit + ""; return createObjects(db.MysqlMulti(query));
+        }
+    }
+    public class Days_of_week_support
+    {
+        public List<Days_of_week> createObjects(System.Data.DataTable table)
+        {
+            List<Days_of_week> objects = new List<Days_of_week>();
+            foreach (System.Data.DataRow row in table.Rows)
+            {
+                Days_of_week instance = new Days_of_week();
+                instance.Id = row["id"].ToString();
+                instance.Day = row["day"].ToString();
+                instance.Short_name = row["short_name"].ToString();
+                objects.Add(instance);
+            }
+            return objects;
+        }
+
+        public enum LogicalOperator { EQUAL_TO, NOT_EQUAL_TO, LESS_THAN, LESS_THAN_OR_EQUAL_TO, GREATER_THAN, GREATER_THAN_OR_EQUAL_TO, LIKE }
+        public string getLogicalOperatorSymbol(LogicalOperator operatorName)
+        {
+            if (operatorName == LogicalOperator.EQUAL_TO) { return "="; }
+            if (operatorName == LogicalOperator.NOT_EQUAL_TO) { return "!="; }
+            if (operatorName == LogicalOperator.LESS_THAN) { return "<"; }
+            if (operatorName == LogicalOperator.LESS_THAN_OR_EQUAL_TO) { return "<="; }
+            if (operatorName == LogicalOperator.GREATER_THAN) { return ">"; }
+            if (operatorName == LogicalOperator.GREATER_THAN_OR_EQUAL_TO) { return ">="; }
+            return "";
+        }
+        public enum Order { ASCENDING, DESCENDING }
+        public string getOrder(Order order)
+        {
+            if (order == Order.ASCENDING) { return "ASC"; }
+            if (order == Order.DESCENDING) { return "DESC"; }
+            return "ASC";
+        }
+        public enum Relation { AND, OR }
+        public enum Column { Id, Day, Short_name }
+        public string getEnumColumnDbName(Column column)
+        {
+            if (column == Column.Id) { return "id"; }
+            if (column == Column.Day) { return "day"; }
+            if (column == Column.Short_name) { return "short_name"; }
+            return "";
+        }
+        public System.Data.DataTable createDataTable(List<Days_of_week> objects)
+        {
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("id"); table.Columns.Add("day"); table.Columns.Add("short_name"); foreach (Days_of_week instance in objects) { table.Rows.Add(instance.Id, instance.Day, instance.Short_name); }
+            return table;
+        }
+
+    }
     public class Denied_app_table : Denied_app_table_support
     {
         Functions db = new Functions(); string id = "";
@@ -4024,11 +4460,17 @@ namespace Project_Dll
             get { return id; }
             set { updateField("id", value, id); id = value; }
         }
-        string day_period = "";
-        public string Day_period
+        string doc_id = "";
+        public string Doc_id
         {
-            get { return day_period; }
-            set { updateField("day_period", value, id); day_period = value; }
+            get { return doc_id; }
+            set { updateField("doc_id", value, id); doc_id = value; }
+        }
+        string day_week_id = "";
+        public string Day_week_id
+        {
+            get { return day_week_id; }
+            set { updateField("day_week_id", value, id); day_week_id = value; }
         }
         string start_time = "";
         public string Start_time
@@ -4051,7 +4493,8 @@ namespace Project_Dll
             foreach (System.Data.DataRow row in db.MysqlMulti("SELECT * FROM `shift_table` WHERE `id` = @value", pars, values).Rows)
             {
                 this.id = row["id"].ToString();
-                this.day_period = row["day_period"].ToString();
+                this.doc_id = row["doc_id"].ToString();
+                this.day_week_id = row["day_week_id"].ToString();
                 this.start_time = row["start_time"].ToString();
                 this.end_time = row["end_time"].ToString();
             }
@@ -4061,13 +4504,15 @@ namespace Project_Dll
         private void load(string query, string[] pars, string[] values)
         {
             this.id = "";
-            this.day_period = "";
+            this.doc_id = "";
+            this.day_week_id = "";
             this.start_time = "";
             this.end_time = "";
             foreach (System.Data.DataRow row in db.MysqlMulti(query, pars, values).Rows)
             {
                 this.id = row["id"].ToString();
-                this.day_period = row["day_period"].ToString();
+                this.doc_id = row["doc_id"].ToString();
+                this.day_week_id = row["day_week_id"].ToString();
                 this.start_time = row["start_time"].ToString();
                 this.end_time = row["end_time"].ToString();
             }
@@ -4122,19 +4567,19 @@ namespace Project_Dll
             loadData(id); return this;
         }
 
-        public Shift_table updateRow(string id, string day_period, string start_time, string end_time)
+        public Shift_table updateRow(string id, string doc_id, string day_week_id, string start_time, string end_time)
         {
-            string[] pars = { "id", "day_period", "start_time", "end_time" };
-            string[] values = { id, day_period, start_time, end_time };
-            db.MysqlPlain("UPDATE `shift_table` SET `id` = @id, `day_period` = @day_period, `start_time` = @start_time, `end_time` = @end_time WHERE `id` = @id", pars, values);
+            string[] pars = { "id", "doc_id", "day_week_id", "start_time", "end_time" };
+            string[] values = { id, doc_id, day_week_id, start_time, end_time };
+            db.MysqlPlain("UPDATE `shift_table` SET `id` = @id, `doc_id` = @doc_id, `day_week_id` = @day_week_id, `start_time` = @start_time, `end_time` = @end_time WHERE `id` = @id", pars, values);
             loadData(id);
             return this;
         }
-        public Shift_table insert(string day_period, string start_time, string end_time)
+        public Shift_table insert(string doc_id, string day_week_id, string start_time, string end_time)
         {
-            string[] pars = { "day_period", "start_time", "end_time" };
-            string[] values = { day_period, start_time, end_time };
-            db.MysqlPlain("INSERT INTO `shift_table`(`day_period`, `start_time`, `end_time`) VALUES(@day_period, @start_time, @end_time)", pars, values);
+            string[] pars = { "doc_id", "day_week_id", "start_time", "end_time" };
+            string[] values = { doc_id, day_week_id, start_time, end_time };
+            db.MysqlPlain("INSERT INTO `shift_table`(`doc_id`, `day_week_id`, `start_time`, `end_time`) VALUES(@doc_id, @day_week_id, @start_time, @end_time)", pars, values);
             loadData(db.getMaxID("shift_table"));
             return this;
         }
@@ -4419,7 +4864,8 @@ namespace Project_Dll
             {
                 Shift_table instance = new Shift_table();
                 instance.Id = row["id"].ToString();
-                instance.Day_period = row["day_period"].ToString();
+                instance.Doc_id = row["doc_id"].ToString();
+                instance.Day_week_id = row["day_week_id"].ToString();
                 instance.Start_time = row["start_time"].ToString();
                 instance.End_time = row["end_time"].ToString();
                 objects.Add(instance);
@@ -4446,11 +4892,12 @@ namespace Project_Dll
             return "ASC";
         }
         public enum Relation { AND, OR }
-        public enum Column { Id, Day_period, Start_time, End_time }
+        public enum Column { Id, Doc_id, Day_week_id, Start_time, End_time }
         public string getEnumColumnDbName(Column column)
         {
             if (column == Column.Id) { return "id"; }
-            if (column == Column.Day_period) { return "day_period"; }
+            if (column == Column.Doc_id) { return "doc_id"; }
+            if (column == Column.Day_week_id) { return "day_week_id"; }
             if (column == Column.Start_time) { return "start_time"; }
             if (column == Column.End_time) { return "end_time"; }
             return "";
@@ -4458,7 +4905,7 @@ namespace Project_Dll
         public System.Data.DataTable createDataTable(List<Shift_table> objects)
         {
             System.Data.DataTable table = new System.Data.DataTable();
-            table.Columns.Add("id"); table.Columns.Add("day_period"); table.Columns.Add("start_time"); table.Columns.Add("end_time"); foreach (Shift_table instance in objects) { table.Rows.Add(instance.Id, instance.Day_period, instance.Start_time, instance.End_time); }
+            table.Columns.Add("id"); table.Columns.Add("doc_id"); table.Columns.Add("day_week_id"); table.Columns.Add("start_time"); table.Columns.Add("end_time"); foreach (Shift_table instance in objects) { table.Rows.Add(instance.Id, instance.Doc_id, instance.Day_week_id, instance.Start_time, instance.End_time); }
             return table;
         }
 
@@ -4907,11 +5354,11 @@ namespace Project_Dll
             get { return id; }
             set { updateField("id", value, id); id = value; }
         }
-        string doctor_id = "";
-        public string Doctor_id
+        string speciality = "";
+        public string Speciality
         {
-            get { return doctor_id; }
-            set { updateField("doctor_id", value, id); doctor_id = value; }
+            get { return speciality; }
+            set { updateField("speciality", value, id); speciality = value; }
         }
         string symptom = "";
         public string Symptom
@@ -4928,7 +5375,7 @@ namespace Project_Dll
             foreach (System.Data.DataRow row in db.MysqlMulti("SELECT * FROM `symptom_dataset` WHERE `id` = @value", pars, values).Rows)
             {
                 this.id = row["id"].ToString();
-                this.doctor_id = row["doctor_id"].ToString();
+                this.speciality = row["speciality"].ToString();
                 this.symptom = row["symptom"].ToString();
             }
             return this;
@@ -4937,12 +5384,12 @@ namespace Project_Dll
         private void load(string query, string[] pars, string[] values)
         {
             this.id = "";
-            this.doctor_id = "";
+            this.speciality = "";
             this.symptom = "";
             foreach (System.Data.DataRow row in db.MysqlMulti(query, pars, values).Rows)
             {
                 this.id = row["id"].ToString();
-                this.doctor_id = row["doctor_id"].ToString();
+                this.speciality = row["speciality"].ToString();
                 this.symptom = row["symptom"].ToString();
             }
         }
@@ -4996,19 +5443,19 @@ namespace Project_Dll
             loadData(id); return this;
         }
 
-        public Symptom_dataset updateRow(string id, string doctor_id, string symptom)
+        public Symptom_dataset updateRow(string id, string speciality, string symptom)
         {
-            string[] pars = { "id", "doctor_id", "symptom" };
-            string[] values = { id, doctor_id, symptom };
-            db.MysqlPlain("UPDATE `symptom_dataset` SET `id` = @id, `doctor_id` = @doctor_id, `symptom` = @symptom WHERE `id` = @id", pars, values);
+            string[] pars = { "id", "speciality", "symptom" };
+            string[] values = { id, speciality, symptom };
+            db.MysqlPlain("UPDATE `symptom_dataset` SET `id` = @id, `speciality` = @speciality, `symptom` = @symptom WHERE `id` = @id", pars, values);
             loadData(id);
             return this;
         }
-        public Symptom_dataset insert(string doctor_id, string symptom)
+        public Symptom_dataset insert(string speciality, string symptom)
         {
-            string[] pars = { "doctor_id", "symptom" };
-            string[] values = { doctor_id, symptom };
-            db.MysqlPlain("INSERT INTO `symptom_dataset`(`doctor_id`, `symptom`) VALUES(@doctor_id, @symptom)", pars, values);
+            string[] pars = { "speciality", "symptom" };
+            string[] values = { speciality, symptom };
+            db.MysqlPlain("INSERT INTO `symptom_dataset`(`speciality`, `symptom`) VALUES(@speciality, @symptom)", pars, values);
             loadData(db.getMaxID("symptom_dataset"));
             return this;
         }
@@ -5293,7 +5740,7 @@ namespace Project_Dll
             {
                 Symptom_dataset instance = new Symptom_dataset();
                 instance.Id = row["id"].ToString();
-                instance.Doctor_id = row["doctor_id"].ToString();
+                instance.Speciality = row["speciality"].ToString();
                 instance.Symptom = row["symptom"].ToString();
                 objects.Add(instance);
             }
@@ -5319,18 +5766,18 @@ namespace Project_Dll
             return "ASC";
         }
         public enum Relation { AND, OR }
-        public enum Column { Id, Doctor_id, Symptom }
+        public enum Column { Id, Speciality, Symptom }
         public string getEnumColumnDbName(Column column)
         {
             if (column == Column.Id) { return "id"; }
-            if (column == Column.Doctor_id) { return "doctor_id"; }
+            if (column == Column.Speciality) { return "speciality"; }
             if (column == Column.Symptom) { return "symptom"; }
             return "";
         }
         public System.Data.DataTable createDataTable(List<Symptom_dataset> objects)
         {
             System.Data.DataTable table = new System.Data.DataTable();
-            table.Columns.Add("id"); table.Columns.Add("doctor_id"); table.Columns.Add("symptom"); foreach (Symptom_dataset instance in objects) { table.Rows.Add(instance.Id, instance.Doctor_id, instance.Symptom); }
+            table.Columns.Add("id"); table.Columns.Add("speciality"); table.Columns.Add("symptom"); foreach (Symptom_dataset instance in objects) { table.Rows.Add(instance.Id, instance.Speciality, instance.Symptom); }
             return table;
         }
 

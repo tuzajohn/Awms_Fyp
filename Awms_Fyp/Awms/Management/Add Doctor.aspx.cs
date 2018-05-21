@@ -16,6 +16,7 @@ namespace Awms_Fyp.Awms.Management
         {
             SV = new SessionVerification();
             if(Session["message"] != null) { MessageLiteral.Text = Session["message"].ToString(); Session["message"] = null; }
+            if (!IsPostBack) { LoadProfession(); }
             Check();
             RegDoctor();
         }
@@ -47,6 +48,12 @@ namespace Awms_Fyp.Awms.Management
                 Session["message"] = new HtmlElements().GetMesage("Fields can not be empty!", HtmlElements.MessageType.ERROR, HtmlElements.UserType.MANAGEMENT);
                 Response.Redirect(nav.ManNewDoctor);
             };
+        }
+        void LoadProfession()
+        {
+            var proList = new Symptom_dataset().getAllRecords();
+            var d = string.Empty;
+            foreach (var pro in proList) { professionSelect.Items.Add(pro.Speciality); }
         }
         bool IsEmpty(string txt)
         {

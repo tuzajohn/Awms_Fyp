@@ -4,35 +4,45 @@ using System.Linq;
 using System.Web;
 using Project_Dll;
 using Customs;
+using System.Data;
 
 namespace Awms_Fyp
 {
     public class ScheduleClass
     {
         MyCustoms myCustoms = new MyCustoms();
+        public string DocTitle { get; set; }
         public ScheduleClass()
         {
 
-        }//speciality, dataset for type
-        public (DateTime time, string docName) SetAppointment(DateTime selectedDate, Dictionary<DateTime, Dictionary<string, List<string>>> appTable)
+        }
+        public void GetDoctorsFromDb(Dictionary<string, List<string>> dictionary, string description, out List<string> doctorsList)
         {
+            var list = new List<string>();
+            DocTitle = new MyCustoms().GetKeyFromDictionary(dictionary, description);
+            var temp = new Doctor_view().getAllRecords().Where(doc => doc.Speciality == DocTitle).ToList();
+            foreach (var item in temp) { list.Add(item.Id); }
+            doctorsList = list;
+        }
+        public int SetAppointment(string selectedDate, string docId, string patientId, string description)
+        {
+            var id = string.Empty;
+            var time = new ShiftHandler().SetTimeAppointment(docId, DateTime.Parse(selectedDate));
+            var app = new Appointment().insert(patientId, docId, DateTime.Parse(selectedDate).ToString("yyyy-MM-dd"), description, "pending", time.ToString());
+            return time;
+        }
+        public void  SlotChecker(int weekInt, string doc_id, out string row)
+        {
+            var temp_id = string.Empty;
+            var appTable =  new Appointment().getAllRecords().Where(a => GetIntWeek(a.Schedule_date) == weekInt && a.Doctor_id == doc_id).ToList();
+            temp_id = new Appointment().getAllRecords().GroupBy(i => i).OrderByDescending(grp => grp.Count()).Select(grp => grp.Key).First().Id;
             
-            return (DateTime.Now, null);
-        }
-        private void Scan(string type, DateTime dayOfShift, List<Speciality_table> docTypeInDay)
-        {
-            //var DayOfShift = new Shift_table().Load_record_with(Shift_table_support.Column.Day_period, Shift_table_support.LogicalOperator.EQUAL_TO, dayOfShift.ToString("yyyy-MM-dd"));
 
+            row = temp_id;
         }
-        private string CheckType(Dictionary<string, List<string>> dictionary, string text)
+        private int GetIntWeek(string date)
         {
-            var type = string.Empty;
-            type = myCustoms.GetKeyFromDictionary(dictionary, text);
-            return type;
-        }
-        private void SlotChecker(List<Appointment> appOfTheDay)
-        {
-
+            return (int)DateTime.Parse(date).DayOfWeek;
         }
     }
 }

@@ -11,21 +11,29 @@ namespace Awms_Fyp
 {
     public class Shift
     {
+        Random random;
         public List<string> MyList;
-        public Shift()
-        {
-
-        }
+        private string Paths;
+        public Shift() { }
         public Shift(string filePath)
         {
-            var table = ConvertToDataTable(filePath, "shift");
+            Paths = filePath;
+        }
+        public Shift(string filePath, string id)
+        {
+            Paths = filePath;
+            var table = ConvertToDataTable("shift");
             var dictionary = ReadFromtTable(table);
-            table = CreateShiftTable(dictionary);
+            var nDictionary = SetShift(dictionary, id);
+            table = CreateShiftTable(nDictionary);
             WriteToFile(table, filePath);
         }
-        string[] DaysOfWeek = { "MON", "TUE", "WEN", "THU", "FRI", "SAT", "SUN" };
-        private DataTable CreateShiftTable(Dictionary<int, List<List<string>>> dictionary)
+        public string[] DaysOfWeek = { "MON", "TUE", "WEN", "THU", "FRI", "SAT", "SUN" };
+        public DataTable CreateShiftTable(Dictionary<int, List<List<string>>> dictionary)
         {
+            RegExpression er = new RegExpression();
+            var (check, result) = er.IsPassword("kfsdfs");
+
             DataTable table = new DataTable("shift");
             table.Columns.Add("Day");
             table.Columns.Add("PERIOD1");//0-4
@@ -45,7 +53,8 @@ namespace Awms_Fyp
                 {
                     if (cellCounter % 7 != 0)
                     {
-                        for (int i = 0; i < periodList.Count; i++)
+                        var count = periodList.Count;
+                        for (int i = 0; i < periodList.Count && !string.IsNullOrEmpty(periodList[i]); i++)
                         {
                             row[cellCounter] += periodList[i] + ":";
                         }
@@ -58,22 +67,25 @@ namespace Awms_Fyp
             }
             return table;
         }
-        public DataTable ConvertToDataTable(string filepath, string title)
+        public DataTable ConvertToDataTable(string title)
         {
             DataTable table = new DataTable(title);
-            var lines = File.ReadAllLines(filepath).ToList();
+            var lines = File.ReadAllLines(Paths).ToList();
             var columnNames = lines[0].Split('|');
             for (int col = 0; col < columnNames.Length; col++)
             {
                 table.Columns.Add(columnNames[col]);
             }
+            DataColumn[] keyColumns = new DataColumn[1];
+            keyColumns[0] = table.Columns[columnNames[0]];
+            table.PrimaryKey = keyColumns;
             int counter = 0;
             foreach (string line in lines)
             {
                 counter++;
-                if (counter-1 == 0) { continue; }
+                if (counter - 1 == 0) { continue; }
                 DataRow row = table.NewRow();
-                if (line.Contains(':'))
+                //if (line.Contains(':'))
                 {
                     var cols = line.Split('|');
                     for (int i = 0; i < cols.Length; i++)
@@ -88,17 +100,17 @@ namespace Awms_Fyp
         public Dictionary<int, List<List<string>>> ReadFromtTable(DataTable table)
         {
             Dictionary<int, List<List<string>>> dictionary = new Dictionary<int, List<List<string>>>();
-            for (int i = 0; i < table.Rows.Count-1; i++)
+            for (int i = 0; i < table.Rows.Count; i++)
             {
                 List<List<string>> lDictionary = new List<List<string>>();
                 for (int j = 0; j < table.Columns.Count; j++)
                 {
                     List<string> tempList = new List<string>();
-                    var cellValue = table.Rows[i][table.Columns[j]].ToString();                    
+                    var cellValue = table.Rows[i][table.Columns[j]].ToString();
                     if (cellValue.Contains(':'))
                     {
                         var idArray = cellValue.Split(':');
-                        for (int m = 0; m < idArray.Length - 1; m++)
+                        for (int m = 0; m < idArray.Length; m++)
                         {
                             tempList.Add(idArray[m]);
                         }
@@ -145,14 +157,14 @@ namespace Awms_Fyp
                 foreach (DataRow row in table.Rows)
                 {
                     object[] cellValues = row.ItemArray;
-                    for (int i = 0; i < cellValues.Length-1; i++)
+                    for (int i = 0; i < cellValues.Length - 1; i++)
                     {
                         var c = cellValues[i];
                         shiftFile.Write(cellValues[i] + "|");
                     }
                     shiftFile.Write(cellValues[cellValues.Length - 1] + "\n");
                 }
-                shiftFile.Write($"Shift table as per {DateTime.Now.ToLongDateString()} @ {DateTime.Now.ToLongTimeString()}");
+                //shiftFile.Write($"Shift table as per {DateTime.Now.ToLongDateString()} @ {DateTime.Now.ToLongTimeString()}");
                 shiftFile.Flush();
                 shiftFile.Close();
             }
@@ -165,25 +177,45 @@ namespace Awms_Fyp
         }
         public Dictionary<int, List<List<string>>> SetShift(Dictionary<int, List<List<string>>> shiftDictionary, string docId)
         {
-            int objCounter = 0;
             var docType = new Speciality_table().Load_record_with(Speciality_table_support.Column.Doctor_id, Speciality_table_support.LogicalOperator.EQUAL_TO, docId);
-            foreach (var shift in shiftDictionary)
-            {
-                foreach (var period in shift.Value)
-                {
-                    if (!period.Contains(docId))
-                    {
-                        foreach (var id in period)
-                        {
-                            var tempType = new Speciality_table().Load_record_with(Speciality_table_support.Column.Doctor_id, Speciality_table_support.LogicalOperator.EQUAL_TO, id);
 
+            var cus = from s in shiftDictionary where s.Value[0][0] == "MON" select s.Key;
+            var n = cus.ToString();
+            foreach (var day in shiftDictionary)
+            {//int max = day.Value.Max(a => a.Count);
+                //var newList = period.Intersect(DaysOfWeek).ToList();
+                var matchingIdValues = day.Value.FirstOrDefault(stringToCheck => stringToCheck.Contains(docId));
+                if (matchingIdValues == null)
+                {
+                    random = new Random();
+                    int tempRandValue = random.Next(1, 6), pos = 0;
+                    int max = day.Value.Max(a => a.Count);
+                    foreach (var period in day.Value)
+                    {
+                        pos++;
+                        var checkList = period.Intersect(DaysOfWeek).ToList();
+                        if (checkList.Count == 0) { continue; }
+                        if (pos == tempRandValue)
+                        {
+                            for (int i = 0; i < period.Count; i++)
+                            {
+                                var docTempType = new Speciality_table().Load_record_with(Speciality_table_support.Column.Doctor_id, Speciality_table_support.LogicalOperator.EQUAL_TO, period[i]);
+                                if (docTempType.Speciality != docType.Speciality)
+                                {
+                                    period.Add(docId);
+                                }
+                                //break;
+                            }
                         }
                     }
                 }
             }
-
-
             return shiftDictionary;
         }
+        public void ManagingShift()
+        {
+
+        }
+
     }
 }

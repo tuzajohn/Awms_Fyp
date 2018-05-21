@@ -22,7 +22,7 @@ namespace Awms_Fyp
             routes.MapPageRoute("register", "register", "~/Awms/Account/Register.aspx");
             routes.MapPageRoute("logout", "logout", "~/Awms/Account/Logout.aspx");
             routes.MapPageRoute("doctor_home", "doctor/home", "~/Awms/Doctor/Default.aspx");
-            routes.MapPageRoute("doctor_appointment", "doctor/appointment/{appid}", "~/Awms/Doctor/Appointment.aspx");
+            routes.MapPageRoute("doctor_appointment", "doctor/{appointment}", "~/Awms/Doctor/Appointment.aspx");
             routes.MapPageRoute("doctor_password", "doctor/password", "~/Awms/Doctor/Password.aspx");
             routes.MapPageRoute("doctor_username", "doctor/username", "~/Awms/Doctor/Username.aspx");
             routes.MapPageRoute("management_dashboard", "management/dashboard", "~/Awms/management/Default.aspx");
@@ -34,6 +34,7 @@ namespace Awms_Fyp
             routes.MapPageRoute("management_user", "management/user/{id}", "~/Awms/management/User.aspx");
             routes.MapPageRoute("management_profile_picture", "management/picture", "~/Awms/management/Picture.aspx");
             routes.MapPageRoute("patient_home", "home", "~/Awms/Patient/Default.aspx");
+            routes.MapPageRoute("patient_home_", "home/{id}", "~/Awms/Patient/Default.aspx");
             routes.MapPageRoute("patient_password", "password", "~/Awms/Patient/Password.aspx");
             routes.MapPageRoute("patient_username", "username", "~/Awms/Patient/Username.aspx");
             routes.MapPageRoute("patient_picture", "picture", "~/Awms/Patient/Picture.aspx");

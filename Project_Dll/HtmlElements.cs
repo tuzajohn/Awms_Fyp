@@ -38,10 +38,10 @@ namespace Project_Dll
             </div>";
             return d;
         }
-        public string GetDoctShift(List<Doctor_shift_table> shift_Table)
+        public string GetDoctShift(List<string> dayList, List<string> periodList)
         {
+            
             var d = string.Empty;
-            if(shift_Table.Count <= 0) { return ""; }
             #region table shit
             d = $@"
             <div class='row'>
@@ -51,17 +51,16 @@ namespace Project_Dll
                             <thead>
                                 <tr>
                                     <th>Day</th>
-                                    <th>Session 1</th>
-                                    <th>Session 2</th>
-                                    <th>Session 3</th>
-                                    <th>Session 4</th>
-                                    <th>Session 5</th>
-                                    <th>Session 6</th>
+                                    <th>00:00 - 04:00</th>
+                                    <th>04:00 - 08:00</th>
+                                    <th>08-00 - 12:00</th>
+                                    <th>12:00 - 16:00</th>
+                                    <th>16:00 - 20:00</th>
+                                    <th>20:00 - 24:00</th>
                                 </tr>
                             </thead>
                             <tbody>";
-
-            foreach (var shift in shift_Table)
+            foreach (var day in dayList)
             {
                 d += "<tr>" +
                     "    <td>1</td>" +
@@ -72,7 +71,6 @@ namespace Project_Dll
                     "    <td>Table cell</td>" +
                     "    <td>Table cell</td>";
             }
-
             d += $@"
                             </tbody>
                         </table>

@@ -19,27 +19,37 @@
                     <div id="collapseOne12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne12" aria-expanded="false" style="height: 0px;">
                         <div class="panel-body">
                             <form runat="server">
-                                <fieldset>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </span>
-                                            <label class="control-label" for="userBox">Choose Date</label>
-                                            <input runat="server" id="appDate" type="date" class="form-control" />
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <div class="form-group label-floating">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-newspaper-o"></i>
+                                                    </span>
+                                                    <label class="control-label" for="userBox">Message</label>
+                                                    <textarea runat="server" class="form-control" rows="1" id="messageBox" required="required"></textarea>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <button runat="server" class="btn btn-block btn-raised btn-primary" id="saveBtn" value="john">Let's schedule</button>
                                     </div>
-                                    <div class="form-group label-floating">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-newspaper-o"></i>
-                                            </span>
-                                            <label class="control-label" for="userBox">Message</label>
-                                            <textarea runat="server" class="form-control" rows="1" id="messageBox" required="required"></textarea>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <button runat="server" class="btn btn-block btn-raised btn-primary" id="saveBtn" value="john">Let's scedule</button>
+                                </div>
+                                <asp:Literal runat="server" ID="ListLiteral" />
+
+                                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered">
+                                    <Columns>
+                                        <asp:BoundField DataField="Day" HeaderText="Day" HtmlEncode="false"/>
+                                        <asp:BoundField DataField="PERIOD1" HeaderText="00:00 - 04:00" HtmlEncode="false" />
+                                        <asp:BoundField DataField="PERIOD2" HeaderText="04:00 - 08:00" HtmlEncode="false" />
+                                        <asp:BoundField DataField="PERIOD3" HeaderText="08:00 - 12:00" HtmlEncode="false" />
+                                        <asp:BoundField DataField="PERIOD4" HeaderText="12:00 - 16:00" HtmlEncode="false" />
+                                        <asp:BoundField DataField="PERIOD5" HeaderText="16:00 - 20:00" HtmlEncode="false" />
+                                        <asp:BoundField DataField="PERIOD6" HeaderText="20:00 - 24:00" HtmlEncode="false" />
+                                    </Columns>
+                                </asp:GridView>
+                                
+
                             </form>
                         </div>
                     </div>
@@ -66,4 +76,20 @@
             
         </div>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#bodybody_GridView1').DataTable({
+                "columns": [
+                    { "data": "#" },
+                    { "data": "Day" },
+                    { "data": "PERIOD1" },
+                    { "data": "PERIOD2" },
+                    { "data": "PERIOD3" },
+                    { "data": "PERIOD4" },
+                    { "data": "PERIOD5" },
+                    { "data": "PERIOD6" }
+                ]
+            });
+        });
+    </script>
 </asp:Content>

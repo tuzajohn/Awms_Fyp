@@ -53,14 +53,14 @@ namespace Awms_Fyp.Awms.Management
             userTpe.InnerHtml = uDetails.User_type.ToUpper();
             var s = new Speciality_table().Load_record_with(Speciality_table_support.Column.Doctor_id, Speciality_table_support.LogicalOperator.EQUAL_TO, uDetails.User_id).Speciality;
             speciality.InnerText = !string.IsNullOrEmpty(s) ? s.ToUpper() : "N/A";
-            DisplayShift(id);//
+            DisplayShift(id);
             var prof = SV.GetImage(new Profile_image_table().Load_record_with(Profile_image_table_support.Column.User_id, Profile_image_table_support.LogicalOperator.EQUAL_TO, id).Url);
             ProfPicLiteral.Text = $"<img src='../../images/{SV.GetImage(prof)}' alt='' class='img-responsive' />";
         }
         void DisplayShift(string docId)
         {
             var shifts = new Doctor_shift_table().Search_For(Doctor_shift_table_support.Column.Doctor_id, Doctor_shift_table_support.LogicalOperator.EQUAL_TO, docId);
-            ShiftTable.Text = elements.GetDoctShift(shifts);
+            //ShiftTable.Text = elements.GetDoctShift(shifts);
         }
 
     }

@@ -44,8 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Customs">
-      <HintPath>..\..\..\repos\CustomsFunctionLibraries\Customs\bin\Debug\Customs.dll</HintPath>
+    <Reference Include="Customs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\repos\CustomsFunctionLibraries\Customs\bin\Release\Customs.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -87,6 +88,7 @@
     <Content Include="Awms\Main.Master" />
     <Content Include="Awms\Doctor\Doctor.Master" />
     <Content Include="Awms\Management\User.aspx" />
+    <Content Include="Awms\Patient\Grid.aspx" />
     <Content Include="Awms\Patient\Password.aspx" />
     <Content Include="Awms\Patient\Patient.Master" />
     <None Include="packages.config" />
@@ -2869,6 +2871,13 @@
     </Compile>
     <Compile Include="Awms\Patient\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Awms\Patient\Grid.aspx.cs">
+      <DependentUpon>Grid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Awms\Patient\Grid.aspx.designer.cs">
+      <DependentUpon>Grid.aspx</DependentUpon>
     </Compile>
     <Compile Include="Awms\Patient\Password.aspx.cs">
       <DependentUpon>Password.aspx</DependentUpon>

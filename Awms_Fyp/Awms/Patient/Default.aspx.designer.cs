@@ -22,15 +22,6 @@ namespace Awms_Fyp.Awms.Patient {
         protected global::System.Web.UI.WebControls.Literal MessageLiteral;
         
         /// <summary>
-        /// appDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl appDate;
-        
-        /// <summary>
         /// messageBox control.
         /// </summary>
         /// <remarks>
@@ -47,5 +38,23 @@ namespace Awms_Fyp.Awms.Patient {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton saveBtn;
+        
+        /// <summary>
+        /// ListLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ListLiteral;
+        
+        /// <summary>
+        /// GridView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

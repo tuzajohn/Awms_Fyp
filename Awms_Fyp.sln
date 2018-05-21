@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Awms_Fyp", "Awms_Fyp\Awms_F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_Dll", "Project_Dll\Project_Dll.csproj", "{B34D9DCE-B2AD-4044-8173-5562CE7A1E95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Final Year Project Unit Tests", "Final Year Project Unit Tests\Final Year Project Unit Tests.csproj", "{37FA67CE-FA6B-4081-AF81-2B2A6E09DB5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B34D9DCE-B2AD-4044-8173-5562CE7A1E95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B34D9DCE-B2AD-4044-8173-5562CE7A1E95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B34D9DCE-B2AD-4044-8173-5562CE7A1E95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37FA67CE-FA6B-4081-AF81-2B2A6E09DB5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37FA67CE-FA6B-4081-AF81-2B2A6E09DB5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37FA67CE-FA6B-4081-AF81-2B2A6E09DB5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37FA67CE-FA6B-4081-AF81-2B2A6E09DB5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

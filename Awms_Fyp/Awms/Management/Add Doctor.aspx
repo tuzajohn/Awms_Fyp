@@ -69,9 +69,7 @@
                                                 <div class="btn-group bootstrap-select form-control">
                                                     <select runat="server" id="professionSelect" class="form-control selectpicker" data-dropup-auto="false" tabindex="-98">
                                                         <option class="disable">Profession</option>
-                                                        <option>Dentist</option>
-                                                        <option>Optician</option>
-                                                        <option>Medical Officer</option>
+                                                        
                                                     </select>
                                                 </div>
                                             </div>

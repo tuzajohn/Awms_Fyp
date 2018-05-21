@@ -30,7 +30,7 @@
                         <p class="pull-right" runat="server" id="dTime">Tuesday, 23 April 2018 17:00</p>
                     </a>
                     <div class="btn-group btn-group-justified">
-                        <a href="#" class="btn btn-success">Accept</a>
+                        <a href="#" runat="server" id="acceptBtn" class="btn btn-success">Accept</a>
                         <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#denyModal">Deny</a>
                     </div>
                 </div>

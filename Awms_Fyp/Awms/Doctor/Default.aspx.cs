@@ -20,6 +20,8 @@ namespace Awms_Fyp.Awms.Doctor
             SV = new SessionVerification();
             enc = new Encryption() { Key = SV.LoginKey };
             Check();
+            GridView1.DataSource = new ShiftHandler().GetTable(new List<string> { SV.Uid }, false);
+            GridView1.DataBind();
             LoadAppointments();
         }
         private void Check()
@@ -41,14 +43,13 @@ namespace Awms_Fyp.Awms.Doctor
             var d = string.Empty;
             var index = 0;
 
-            var Apps = new Project_Dll.Appointment().Search_For(Appointment_support.Column.Doctor_id, Appointment_support.LogicalOperator.EQUAL_TO, SV.Uid,
-                Appointment_support.Relation.AND, Appointment_support.Column.Schedule_date, Appointment_support.LogicalOperator.GREATER_THAN_OR_EQUAL_TO, DateTime.Now.ToString("yyyy-MM-dd"));
+            var Apps = new Project_Dll.Appointment().getAllRecords().Where(a => a.Doctor_id == SV.Uid && DateTime.Parse(a.Schedule_date) >= DateTime.Now).ToList();
             foreach (var app in Apps)
             {
                 if(app.Status != "pending") { continue; }
                 index++;
-                var patient = new Patient_view().Load_record_with(Patient_view_support.Column.Id, Patient_view_support.LogicalOperator.EQUAL_TO, app.Patient_id);
-                d += $"<tr><td>{index}</td><td><a href='../../doctor/appointment/{enc.EncryptString(app.Id, SV.LoginKey)}'>{patient.Name}</a></td><td>{app.Descritpion}</td><td>{app.Schedule_date}</td><td>{app.Set_time}</td></tr>";
+                var patient = new Patient_view().getAllRecords().Where(p => p.Id == app.Patient_id).FirstOrDefault();
+                d += $"<tr><td>{index}</td><td><a href='../../doctor/appointment?appid={enc.EncryptString(app.Id, SV.LoginKey)}'>{patient.Name}</a></td><td>{app.Descritpion}</td><td>{app.Schedule_date}</td><td>{app.Set_time}</td></tr>";
             }
             NewAppointmentsLiteral.Text = index.ToString();
             AppLiteral.Text = d;

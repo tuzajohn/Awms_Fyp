@@ -67,6 +67,15 @@ namespace Awms_Fyp.Awms.Doctor {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dTime;
         
         /// <summary>
+        /// acceptBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor acceptBtn;
+        
+        /// <summary>
         /// SubjectBox control.
         /// </summary>
         /// <remarks>

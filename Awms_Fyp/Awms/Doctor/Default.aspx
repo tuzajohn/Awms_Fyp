@@ -25,8 +25,27 @@
                                 <asp:Literal runat="server" ID="AppLiteral" />
                             </tbody>
                         </table>
-
                     </div>
+                </div>
+            </div>
+            <div class="card card-royal">
+                <div class="card-header">
+                    <h3>My Shift TimeTable</h3>
+                </div>
+                <div class="card-block">
+                    <form runat="server">
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered table-responsive table-condensed">
+                            <Columns>
+                                <asp:BoundField DataField="Day" HeaderText="Day" HtmlEncode="false" />
+                                <asp:BoundField DataField="PERIOD1" HeaderText="00:00 - 04:00" HtmlEncode="false" ControlStyle-Font-Size="XX-Small" />
+                                <asp:BoundField DataField="PERIOD2" HeaderText="04:00 - 08:00" HtmlEncode="false" />
+                                <asp:BoundField DataField="PERIOD3" HeaderText="08:00 - 12:00" HtmlEncode="false" />
+                                <asp:BoundField DataField="PERIOD4" HeaderText="12:00 - 16:00" HtmlEncode="false" />
+                                <asp:BoundField DataField="PERIOD5" HeaderText="16:00 - 20:00" HtmlEncode="false" />
+                                <asp:BoundField DataField="PERIOD6" HeaderText="20:00 - 24:00" HtmlEncode="false" />
+                            </Columns>
+                        </asp:GridView>
+                    </form>
                 </div>
             </div>
         </div>

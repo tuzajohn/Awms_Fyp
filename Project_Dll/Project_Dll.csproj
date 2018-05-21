@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Customs">
+      <HintPath>..\..\..\repos\CustomsFunctionLibraries\Customs\bin\Release\Customs.dll</HintPath>
+    </Reference>
     <Reference Include="DLW Library">
       <HintPath>D:\Business\Kernelgen\DLW Library.dll</HintPath>
     </Reference>
@@ -52,6 +55,7 @@
     <Compile Include="HtmlElements.cs" />
     <Compile Include="Modal_Db.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShiftHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

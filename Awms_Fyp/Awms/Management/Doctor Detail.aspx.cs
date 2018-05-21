@@ -14,6 +14,7 @@ namespace Awms_Fyp.Awms.Management
 {
     public partial class Doctor_Detail : System.Web.UI.Page
     {
+        Shift Shift;
         SessionVerification SV;
         NavClass nav = new NavClass();
         Encryption enc;
@@ -24,29 +25,37 @@ namespace Awms_Fyp.Awms.Management
             enc = new Encryption() { Key = SV.LoginKey };
             if (Session["message"] != null) { MessageLiteral.Text = Session["message"].ToString(); Session["message"] = null; }
             Check();
+            SaveDoctor();
         }
         private void SaveDoctor()
         {
-            var redirect = string.Empty;
-            var logins = new Login_table().Load_record_with(Login_table_support.Column.Username, Login_table_support.LogicalOperator.EQUAL_TO, userBox.Value);
-            if (IsEmpty(logins.Id))
+            SaveBtn.ServerClick += delegate
             {
-                var uDetails = new User_details();
-                var spTable = new Speciality_table();
-                if (passBox.Value == rePass.Value)
+                var redirect = string.Empty;
+                var logins = new Login_table().Load_record_with(Login_table_support.Column.Username, Login_table_support.LogicalOperator.EQUAL_TO, userBox.Value);
+                if (IsEmpty(logins.Id))
                 {
-                    logins.insert(userBox.Value, enc.GetMD5(enc.StrongEncrypt(passBox.Value)), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), "3");
-                    uDetails.insert(logins.Id, Session["fname"].ToString(), Session["lname"].ToString(), Session["email"].ToString(), Session["address"].ToString(),
-                        Session["contact"].ToString(), Session["gender"].ToString(), Session["date"].ToString(), "doctor");
-                    ImagePofile();
-                    spTable.insert(logins.Id, Session["profession"].ToString());
-                    Session["message"] = elements.GetMesage("New doctor has been added :-)", HtmlElements.MessageType.SUCCESS, HtmlElements.UserType.MANAGEMENT);
-                    redirect = nav.Dashboard;
+                    var uDetails = new User_details();
+                    var spTable = new Speciality_table();
+                    if (passBox.Value == rePass.Value)
+                    {
+                        logins.insert(userBox.Value, enc.GetMD5(enc.StrongEncrypt(passBox.Value)), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), "3");
+                        uDetails.insert(logins.Id, Session["fname"].ToString(), Session["lname"].ToString(), Session["email"].ToString(), Session["address"].ToString(),
+                            Session["contact"].ToString(), Session["gender"].ToString(), Session["date"].ToString(), "doctor");
+                        ImagePofile();
+                        spTable.insert(logins.Id, Session["profession"].ToString());
+
+                        new ShiftHandler().SetDocShift(logins.Id);
+
+                        Session["message"] = elements.GetMesage("New doctor has been added :-)", HtmlElements.MessageType.SUCCESS, HtmlElements.UserType.MANAGEMENT);
+                        Shift = new Shift(SV.ShiftFilePath, logins.Id);
+                        redirect = nav.Dashboard;
+                    }
+                    else { Session["message"] = elements.GetMesage("Passwords do not match!", HtmlElements.MessageType.SUCCESS, HtmlElements.UserType.MANAGEMENT); redirect = nav.ManNewDoctorDetails; }
                 }
-                else { Session["message"] = elements.GetMesage("Passwords do not match!", HtmlElements.MessageType.SUCCESS, HtmlElements.UserType.MANAGEMENT); redirect = nav.ManNewDoctorDetails; }
-            }
-            else { Session["message"] = elements.GetMesage("Username already exist", HtmlElements.MessageType.SUCCESS, HtmlElements.UserType.MANAGEMENT); redirect = nav.ManNewDoctorDetails; }
-            Response.Redirect(redirect);
+                else { Session["message"] = elements.GetMesage("Username already exist", HtmlElements.MessageType.SUCCESS, HtmlElements.UserType.MANAGEMENT); redirect = nav.ManNewDoctorDetails; }
+                Response.Redirect(redirect);
+            };
         }
         private void ImagePofile()
         {

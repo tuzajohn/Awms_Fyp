@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Project_Dll;
 
 namespace Awms_Fyp.Awms.Doctor
 {
@@ -19,6 +20,7 @@ namespace Awms_Fyp.Awms.Doctor
         {
             user_linksLiteral.Text = SV.Name;
             ImageLiteral.Text = $"<img src='../../Images/{SV.GetImage(SV.ProfileImage)}' alt='' class='img-responsive' />";
+           
         }
     }
 }
